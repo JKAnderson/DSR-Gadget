@@ -1,0 +1,43 @@
+1400000   1 4 East-West Shield
+1401000   1 4 Wooden Shield
+1402000   1 4 Large Leather Shield
+1403000   1 4 Small Leather Shield
+1404000   1 4 Target Shield
+1405000   1 4 Buckler
+1406000   1 4 Cracked Round Shield
+1408000   1 4 Leather Shield
+1409000   1 4 Plank Shield
+1410000   1 4 Caduceus Round Shield
+1411000   1 1 Crystal Ring Shield
+1450000   1 4 Heater Shield
+1451000   1 4 Knight Shield
+1452000   1 4 Tower Kite Shield
+1453000   1 4 Grass Crest Shield
+1454000   1 4 Hollow Soldier Shield
+1455000   1 4 Balder Shield
+1456000   1 1 Crest Shield
+1457000   1 1 Dragon Crest Shield
+1460000   1 4 Warrior's Round Shield
+1461000   1 4 Iron Round Shield
+1462000   1 4 Spider Shield
+1470000   1 3 Spiked Shield
+1471000   1 0 Crystal Shield
+1472000   1 4 Sunlight Shield
+1473000   1 1 Silver Knight Shield
+1474000   1 1 Black Knight Shield
+1475000   1 3 Pierce Shield
+1476000   1 4 Red and White Round Shield
+1477000   1 4 Caduceus Kite Shield
+1478000   1 4 Gargoyle's Shield
+1500000   1 4 Eagle Shield
+1501000   1 4 Tower Shield
+1502000   1 4 Giant Shield
+1503000   1 1 Stone Greatshield
+1505000   1 1 Havel's Greatshield
+1506000   1 3 Bonewheel Shield
+1507000   1 1 Greatshield of Artorias
+9000000   1 4 Effigy Shield
+9001000   1 4 Sanctus
+9002000   1 4 Bloodshield
+9003000   1 4 Black Iron Greatshield
+9014000   1 1 Cleansing Greatshield

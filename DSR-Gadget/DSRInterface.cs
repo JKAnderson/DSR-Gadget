@@ -8,9 +8,10 @@ namespace DSR_Gadget
     class DSRInterface
     {
         private const uint PROCESS_ALL_ACCESS = 0x1F0FFF;
-        private const uint MEM_COMMIT = 0x1000;
+        private const uint MEM_COMMIT_RESERVE = 0x1000 | 0x2000;
         private const uint MEM_RELEASE = 0x8000;
         private const uint PAGE_READWRITE = 0x4;
+        private const uint PAGE_EXECUTE_READWRITE = 0x40;
 
         [DllImport("kernel32.dll")]
         private static extern IntPtr OpenProcess(uint dwDesiredAccess, bool bInheritHandle, uint dwProcessId);
@@ -65,6 +66,40 @@ namespace DSR_Gadget
         private bool WriteProcessMemory(IntPtr address, byte[] bytes)
         {
             return WriteProcessMemory(handle, address, bytes, (uint)bytes.Length, 0);
+        }
+
+        private IntPtr VirtualAllocEx(int size, uint protect = PAGE_READWRITE)
+        {
+            return VirtualAllocEx(handle, IntPtr.Zero, (uint)size, MEM_COMMIT_RESERVE, protect);
+        }
+
+        private bool VirtualFreeEx(IntPtr address)
+        {
+            return VirtualFreeEx(handle, address, 0, MEM_RELEASE);
+        }
+
+        private IntPtr CreateRemoteThread(IntPtr address)
+        {
+            return CreateRemoteThread(handle, IntPtr.Zero, 0, address, IntPtr.Zero, 0, IntPtr.Zero);
+        }
+
+        public IntPtr Allocate(int size)
+        {
+            return VirtualAllocEx(size);
+        }
+
+        public bool Free(IntPtr address)
+        {
+            return VirtualFreeEx(address);
+        }
+
+        public void Execute(byte[] asm)
+        {
+            IntPtr address = VirtualAllocEx(asm.Length, PAGE_EXECUTE_READWRITE);
+            WriteProcessMemory(address, asm);
+            IntPtr thread = CreateRemoteThread(address);
+            WaitForSingleObject(thread, 0xFFFFFFFF);
+            VirtualFreeEx(address);
         }
 
         public byte[] ReadBytes(IntPtr address, int size)
@@ -141,7 +176,7 @@ namespace DSR_Gadget
         {
             foreach (int offset in offsets)
                 address = ReadIntPtr(address) + offset;
-            return address;
+            return ReadIntPtr(address);
         }
 
         public bool ReadFlag32(IntPtr address, uint mask)

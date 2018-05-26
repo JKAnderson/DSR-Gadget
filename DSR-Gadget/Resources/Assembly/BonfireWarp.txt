@@ -1,0 +1,10 @@
+﻿0:  48 b9 b0 1b cf 41 01    movabs rcx,0x141cf1bb0
+7:  00 00 00
+a:  48 8b 09                mov    rcx,QWORD PTR [rcx]
+d:  ba 01 00 00 00          mov    edx,0x1
+12: 48 83 ec 38             sub    rsp,0x38
+16: 49 be 60 bd 47 40 01    movabs r14,0x14047bd60
+1d: 00 00 00
+20: 41 ff d6                call   r14
+23: 48 83 c4 38             add    rsp,0x38
+27: c3                      ret 

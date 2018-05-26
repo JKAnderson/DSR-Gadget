@@ -1,0 +1,10 @@
+﻿0:  48 ba 00 00 00 00 ff    movabs rdx,0xffffffff00000000
+7:  ff ff ff
+a:  48 b9 00 00 00 00 ff    movabs rcx,0xffffffff00000000
+11: ff ff ff
+14: 48 83 ec 38             sub    rsp,0x38
+18: 49 be 20 99 68 40 01    movabs r14,0x140689920
+1f: 00 00 00
+22: 41 ff d6                call   r14
+25: 48 83 c4 38             add    rsp,0x38
+29: c3                      ret 

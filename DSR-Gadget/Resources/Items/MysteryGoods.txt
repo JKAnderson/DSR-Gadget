@@ -1,0 +1,42 @@
+    116   1 0 Black Eye Orb (Shiva)
+    200   1 0 Estus Flask (Empty)
+    201  20 0 Estus Flask
+    202   1 0 Estus Flask+1 (Empty)
+    203  20 0 Estus Flask+1
+    204   1 0 Estus Flask+2 (Empty)
+    205  20 0 Estus Flask+2
+    206   1 0 Estus Flask+3 (Empty)
+    207  20 0 Estus Flask+3
+    208   1 0 Estus Flask+4 (Empty)
+    209  20 0 Estus Flask+4
+    210   1 0 Estus Flask+5 (Empty)
+    211  20 0 Estus Flask+5
+    212   1 0 Estus Flask+6 (Empty)
+    213  20 0 Estus Flask+6
+    214   1 0 Estus Flask+7 (Empty)
+    215  20 0 Estus Flask+7
+    350  99 0 Humanity
+   2015   1 0 Lift Chamber Key
+   2200   1 0 Placeholder Key
+   2504   1 0 Demon Flame 5
+   2603   1 0 Blank Scroll
+   2604   1 0 Placeholder Key
+   2605   1 0 Placeholder Key
+   2606   1 0 Placeholder Key
+   2609   1 0 Placeholder Key
+   5200  99 0 Miracle: Escape Death
+   9000   1 0 Beckon
+   9001   1 0 Point forward
+   9002   1 0 Hurrah!
+   9003   1 0 Bow
+   9004   1 0 Joy
+   9005   1 0 Shrug
+   9006   1 0 Wave
+   9007   1 0 Praise the Sun
+   9008   1 0 Point up
+   9009   1 0 Point down
+   9010   1 0 Look skyward
+   9011   1 0 Well! What is it!
+   9012   1 0 Prostration
+   9013   1 0 Proper bow
+   9014   1 0 Prayer

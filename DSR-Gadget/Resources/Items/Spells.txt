@@ -1,0 +1,71 @@
+   3000  99 0 Sorcery: Soul Arrow
+   3010  99 0 Sorcery: Great Soul Arrow
+   3020  99 0 Sorcery: Heavy Soul Arrow
+   3030  99 0 Sorcery: Great Heavy Soul Arrow
+   3040  99 0 Sorcery: Homing Soulmass
+   3050  99 0 Sorcery: Homing Crystal Soulmass
+   3060  99 0 Sorcery: Soul Spear
+   3070  99 0 Sorcery: Crystal Soul Spear
+   3100  99 0 Sorcery: Magic Weapon
+   3110  99 0 Sorcery: Great Magic Weapon
+   3120  99 0 Sorcery: Crystal Magic Weapon
+   3300  99 0 Sorcery: Magic Shield
+   3310  99 0 Sorcery: Strong Magic Shield
+   3400  99 0 Sorcery: Hidden Weapon
+   3410  99 0 Sorcery: Hidden Body
+   3500  99 0 Sorcery: Cast Light
+   3510  99 0 Sorcery: Hush
+   3520  99 0 Sorcery: Aural Decoy
+   3530  99 0 Sorcery: Repair
+   3540  99 0 Sorcery: Fall Control
+   3550  99 0 Sorcery: Chameleon
+   3600  99 0 Sorcery: Resist Curse
+   3610  99 0 Sorcery: Remedy
+   3700  99 0 Sorcery: White Dragon Breath
+   3710  99 0 Sorcery: Dark Orb
+   3720  99 0 Sorcery: Dark Bead
+   3730  99 0 Sorcery: Dark Fog
+   3740  99 0 Sorcery: Pursuers
+   4000  99 0 Pyromancy: Fireball
+   4010  99 0 Pyromancy: Fire Orb
+   4020  99 0 Pyromancy: Great Fireball
+   4030  99 0 Pyromancy: Firestorm
+   4040  99 0 Pyromancy: Fire Tempest
+   4050  99 0 Pyromancy: Fire Surge
+   4060  99 0 Pyromancy: Fire Whip
+   4100  99 0 Pyromancy: Combustion
+   4110  99 0 Pyromancy: Great Combustion
+   4200  99 0 Pyromancy: Poison Mist
+   4210  99 0 Pyromancy: Toxic Mist
+   4220  99 0 Pyromancy: Acid Surge
+   4300  99 0 Pyromancy: Iron Flesh
+   4310  99 0 Pyromancy: Flash Sweat
+   4360  99 0 Pyromancy: Undead Rapport
+   4400  99 0 Pyromancy: Power Within
+   4500  99 0 Pyromancy: Great Chaos Fireball
+   4510  99 0 Pyromancy: Chaos Storm
+   4520  99 0 Pyromancy: Chaos Fire Whip
+   4530  99 0 Pyromancy: Black Flame
+   5000  99 0 Miracle: Heal
+   5010  99 0 Miracle: Great Heal
+   5020  99 0 Miracle: Great Heal Excerpt
+   5030  99 0 Miracle: Soothing Sunlight
+   5040  99 0 Miracle: Replenishment
+   5050  99 0 Miracle: Bountiful Sunlight
+   5100  99 0 Miracle: Gravelord Sword Dance
+   5110  99 0 Miracle: Gravelord Greatsword Dance
+   5210  99 0 Miracle: Homeward
+   5300  99 0 Miracle: Force
+   5310  99 0 Miracle: Wrath of the Gods
+   5320  99 0 Miracle: Emit Force
+   5400  99 0 Miracle: Seek Guidance
+   5500  99 0 Miracle: Lightning Spear
+   5510  99 0 Miracle: Great Lightning Spear
+   5520  99 0 Miracle: Sunlight Spear
+   5600  99 0 Miracle: Magic Barrier
+   5610  99 0 Miracle: Great Magic Barrier
+   5700  99 0 Miracle: Karmic Justice
+   5800  99 0 Miracle: Tranquil Walk of Peace
+   5810  99 0 Miracle: Vow of Silence
+   5900  99 0 Miracle: Sunlight Blade
+   5910  99 0 Miracle: Darkmoon Blade

@@ -1,0 +1,92 @@
+      1   1 0 [Unknown]
+   1000   1 0 Shaved
+   1100   1 0 Receding
+   1200   1 0 Short
+   1300   1 0 Swept Back
+   1400   1 0 Ponytail
+   1500   1 0 Wild
+   1600   1 0 Parted Center
+   1700   1 0 Semi-Long
+   1800   1 0 Curly
+   1900   1 0 Bobbed
+   2000   1 0 Male 11
+   2100   1 0 Male 12
+   2200   1 0 Male 13
+   2300   1 0 Male 14
+   2400   1 0 Male 15
+   2500   1 0 Male 16
+   2600   1 0 Male 17
+   2700   1 0 Male 18
+   2800   1 0 Male 19
+   2900   1 0 Male 20
+   3000   1 0 Shaved
+   3100   1 0 Very Short
+   3200   1 0 Wave
+   3300   1 0 Straight A
+   3400   1 0 Straight B
+   3500   1 0 Ponytail A
+   3600   1 0 Ponytail B
+   3700   1 0 Pigtails
+   3800   1 0 Bun
+   3900   1 0 Braided
+   4000   1 0 Female 11
+   4100   1 0 Female 12
+   4200   1 0 Female 13
+   4300   1 0 Female 14
+   4400   1 0 Female 15
+   4500   1 0 Female 16
+   4600   1 0 Female 17
+   4700   1 0 Female 18
+   4800   1 0 Female 19
+   4900   1 0 Female 20
+   5000   1 0 Travel Hairstyle
+ 370000   1 2 Mage Smith Hat
+ 371000   1 2 Mage Smith Coat
+ 372000   1 2 Mage Smith Gauntlets
+ 373000   1 2 Mage Smith Boots
+ 650000   1 2 Elite Cleric Helm
+ 651000   1 2 Elite Cleric Armor
+ 652000   1 2 Elite Cleric Gauntlets
+ 653000   1 2 Elite Cleric Leggings
+ 900000   1 0 Head
+ 901000   1 0 Body
+ 902000   1 0 Arms
+ 903000   1 0 Legs
+ 950000   1 0 No Travel Gear / Head
+ 951000   1 0 No Travel Gear / Body
+ 952000   1 0 No Travel Gear / Arms
+ 953000   1 0 No Travel Gear / Legs
+1000000   1 0 Dragon Head
+1001000   1 0 Dragon Body
+1002000   1 0 Dragon Arms
+1003000   1 0 Dragon Legs
+1010000   1 0 Egg
+1020000   1 0 Big Egg
+2160000   1 2 Solaire's Head
+2161000   1 2 Solaire's Body
+2162000   1 2 Solaire's Arms
+2163000   1 2 Solaire's Legs
+2170000   1 2 Crestfallen's Head
+2171000   1 2 Crestfallen's Body
+2172000   1 2 Crestfallen's Arms
+2173000   1 2 Crestfallen's Legs
+2180000   1 2 Nico's Head
+2181000   1 2 Nico's Body
+2182000   1 2 Nico's Arms
+2183000   1 2 Nico's Legs
+2230000   1 2 Laurentius' Head
+2231000   1 2 Laurentius' Body
+2232000   1 2 Laurentius' Arms
+2233000   1 2 Laurentius' Legs
+2350000   1 2 Oscar's Head
+2351000   1 2 Oscar's Body
+2352000   1 2 Oscar's Arms
+2353000   1 2 Oscar's Legs
+2410000   1 2 Rhea's Head
+2411000   1 2 Rhea's Body
+2412000   1 2 Rhea's Arms
+2413000   1 2 Rhea's Legs
+2640000   1 2 Griggs' Head
+2641000   1 2 Griggs' Body
+2642000   1 2 Griggs' Arms
+2643000   1 2 Griggs' Legs

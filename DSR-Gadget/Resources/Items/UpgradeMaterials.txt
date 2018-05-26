@@ -1,0 +1,24 @@
+    800   1 0 Large Ember
+    801   1 0 Very Large Ember
+    802   1 0 Crystal Ember
+    806   1 0 Large Magic Ember
+    807   1 0 Enchanted Ember
+    808   1 0 Divine Ember
+    809   1 0 Large Divine Ember
+    810   1 0 Dark Ember
+    812   1 0 Large Flame Ember
+    813   1 0 Chaos Flame Ember
+   1000  99 0 Titanite Shard
+   1010  99 0 Large Titanite Shard
+   1020  99 0 Green Titanite Shard
+   1030  99 0 Titanite Chunk
+   1040  99 0 Blue Titanite Chunk
+   1050  99 0 White Titanite Chunk
+   1060  99 0 Red Titanite Chunk
+   1070  99 0 Titanite Slab
+   1080  99 0 Blue Titanite Slab
+   1090  99 0 White Titanite Slab
+   1100  99 0 Red Titanite Slab
+   1110  99 0 Dragon Scale
+   1120  99 0 Demon Titanite
+   1130  99 0 Twinkling Titanite

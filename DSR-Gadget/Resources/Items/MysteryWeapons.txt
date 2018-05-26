@@ -1,0 +1,32 @@
+ 199000   1 0 Phantom Dagger
+ 299000   1 0 Phantom Straight Sword
+ 398000   1 0 Phantom Greatsword
+ 399000   1 0 Phantom Ultra Greatsword
+ 498000   1 0 Phantom Curved Sword
+ 499000   1 0 Phantom Curved Greatsword
+ 599000   1 0 Phantom Katana
+ 699000   1 0 Phantom Thrusting Sword
+ 798000   1 0 Phantom Axe
+ 799000   1 0 Phantom Greataxe
+ 898000   1 0 Phantom Hammer
+ 899000   1 0 Phantom Greathammer
+ 900000   1 0 Fists
+ 999000   1 0 Phantom Fists
+1099000   1 0 Phantom Spear
+1199000   1 0 Phantom Halberd
+1298000   1 0 Phantom Bow
+1299000   1 0 Phantom Crossbow
+1364000   1 0 Gwynevere's Talisman
+1397000   1 0 Phantom Catalyst
+1398000   1 0 [Unknown]
+1399000   1 0 [Unknown]
+1498000   1 0 Phantom Small Shield
+1499000   1 0 Phantom Shield
+1599000   1 0 Phantom Greatshield
+1699000   1 0 Phantom Whip
+2099000 999 0 Phantom Arrow
+2199000 999 0 Phantom Bolt
+9004000   1 4 [Unknown]
+9005000   1 4 [Unknown]
+9006000   1 4 [Unknown]
+9007000   1 4 [Unknown]

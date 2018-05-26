@@ -1,0 +1,22 @@
+    100   1 0 White Sign Soapstone
+    101   1 0 Red Sign Soapstone
+    102   1 0 Red Eye Orb
+    103   1 0 Black Separation Crystal
+    106   1 0 Orange Guidance Soapstone
+    108   1 0 Book of the Guilty
+    112   1 0 Servant Roster
+    113   1 0 Blue Eye Orb
+    114   1 0 Dragon Eye
+    115   1 0 Black Eye Orb
+    117   1 0 Darksign
+    118   1 0 Purple Coward's Crystal
+    220  99 0 Silver Pendant
+    371   1 0 Binoculars
+    377  99 0 Dragon Head Stone
+    378  99 0 Dragon Torso Stone
+    385   1 0 Dried Finger
+    510   1 0 Hello Carving
+    511   1 0 Thank you Carving
+    512   1 0 Very good! Carving
+    513   1 0 I'm sorry Carving
+    514   1 0 Help me! Carving

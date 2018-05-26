@@ -1,0 +1,63 @@
+    109  99 0 Eye of Death
+    111  99 0 Cracked Red Eye Orb
+    230  99 0 Elizabeth's Mushroom
+    240  99 0 Divine Blessing
+    260  99 0 Green Blossom
+    270  99 0 Bloodred Moss Clump
+    271  99 0 Purple Moss Clump
+    272  99 0 Blooming Purple Moss Clump
+    274  99 0 Purging Stone
+    275  99 0 Egg Vermifuge
+    280  99 0 Repair Powder
+    290  99 0 Throwing Knife
+    291  99 0 Poison Throwing Knife
+    292  99 0 Firebomb
+    293  99 0 Dung Pie
+    294  99 0 Alluring Skull
+    296  99 0 Lloyd's Talisman
+    297  99 0 Black Firebomb
+    310  99 0 Charcoal Pine Resin
+    311  99 0 Gold Pine Resin
+    312  99 0 Transient Curse
+    313  99 0 Rotten Pine Resin
+    330  99 0 Homeward Bone
+    370  99 0 Prism Stone
+    373  99 0 Indictment
+    374  99 0 Souvenir of Reprisal
+    375  99 0 Sunlight Medal
+    376  99 0 Pendant
+    380  99 0 Rubbish
+    381  99 0 Copper Coin
+    382  99 0 Silver Coin
+    383  99 0 Gold Coin
+    390   1 0 Fire Keeper Soul (Anastacia of Astora)
+    391   1 0 Fire Keeper Soul (Darkmoon Knightess)
+    392   1 0 Fire Keeper Soul (Daughter of Chaos)
+    393   1 0 Fire Keeper Soul (New Londo)
+    394   1 0 Fire Keeper Soul (Blighttown)
+    395   1 0 Fire Keeper Soul (Duke's Archives)
+    396   1 0 Fire Keeper Soul (Undead Parish)
+    400  99 0 Soul of a Lost Undead
+    401  99 0 Large Soul of a Lost Undead
+    402  99 0 Soul of a Nameless Soldier
+    403  99 0 Large Soul of a Nameless Soldier
+    404  99 0 Soul of a Proud Knight
+    405  99 0 Large Soul of a Proud Knight
+    406  99 0 Soul of a Brave Warrior
+    407  99 0 Large Soul of a Brave Warrior
+    408  99 0 Soul of a Hero
+    409  99 0 Soul of a Great Hero
+    500  99 0 Humanity
+    501  99 0 Twin Humanities
+    700  99 0 Soul of Quelaag
+    701  99 0 Soul of Sif
+    702  99 0 Soul of Gwyn, Lord of Cinder
+    703  99 0 Core of an Iron Golem
+    704  99 0 Soul of Ornstein
+    705  99 0 Soul of the Moonlight Butterfly
+    706  99 0 Soul of Smough
+    707  99 0 Soul of Priscilla
+    708  99 0 Soul of Gwyndolin
+    709  99 0 Guardian Soul
+    710  99 0 Soul of Artorias
+    711  99 0 Soul of Manus

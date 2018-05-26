@@ -1,0 +1,108 @@
+ 100000   1 3 Dagger
+ 101000   1 3 Parrying Dagger
+ 102000   1 1 Ghost Blade
+ 103000   1 3 Bandit's Knife
+ 104000   1 1 Priscilla's Dagger
+ 200000   1 3 Shortsword
+ 201000   1 3 Longsword
+ 202000   1 3 Broadsword
+ 203000   1 3 Broken Straight Sword
+ 204000   1 3 Balder Side Sword
+ 205000   1 0 Crystal Straight Sword
+ 206000   1 3 Sunlight Straight Sword
+ 207000   1 3 Barbed Straight Sword
+ 208000   1 1 Silver Knight Straight Sword
+ 209000   1 1 Astora's Straight Sword
+ 210000   1 3 Darksword
+ 211000   1 1 Drake Sword
+ 212000   1 3 Straight Sword Hilt
+ 300000   1 3 Bastard Sword
+ 301000   1 3 Claymore
+ 302000   1 3 Man-serpent Greatsword
+ 303000   1 3 Flamberge
+ 304000   1 0 Crystal Greatsword
+ 306000   1 1 Stone Greatsword
+ 307000   1 1 Greatsword of Artorias
+ 309000   1 1 Moonlight Greatsword
+ 310000   1 1 Black Knight Sword
+ 311000   1 1 Greatsword of Artorias (Cursed)
+ 314000   1 1 Great Lord Greatsword
+ 350000   1 3 Zweihander
+ 351000   1 3 Greatsword
+ 352000   1 3 Demon Great Machete
+ 354000   1 1 Dragon Greatsword
+ 355000   1 1 Black Knight Greatsword
+ 400000   1 3 Scimitar
+ 401000   1 3 Falchion
+ 402000   1 3 Shotel
+ 403000   1 1 Jagged Ghost Blade
+ 405000   1 3 Painting Guardian Sword
+ 406000   1 1 Quelaag's Furysword
+ 450000   1 3 Server
+ 451000   1 3 Murakumo
+ 453000   1 1 Gravelord Sword
+ 500000   1 3 Uchigatana
+ 501000   1 3 Washing Pole
+ 502000   1 3 Iaito
+ 503000   1 1 Chaos Blade
+ 600000   1 3 Mail Breaker
+ 601000   1 3 Rapier
+ 602000   1 3 Estoc
+ 603000   1 1 Velka's Rapier
+ 604000   1 3 Ricard's Rapier
+ 700000   1 3 Hand Axe
+ 701000   1 3 Battle Axe
+ 702000   1 1 Crescent Axe
+ 703000   1 3 Butcher Knife
+ 704000   1 1 Golem Axe
+ 705000   1 3 Gargoyle Tail Axe
+ 750000   1 3 Greataxe
+ 751000   1 3 Demon's Greataxe
+ 752000   1 1 Dragon King Greataxe
+ 753000   1 1 Black Knight Greataxe
+ 800000   1 3 Club
+ 801000   1 3 Mace
+ 802000   1 3 Morning Star
+ 803000   1 3 Warpick
+ 804000   1 3 Pickaxe
+ 809000   1 3 Reinforced Club
+ 810000   1 3 Blacksmith Hammer
+ 811000   1 1 Blacksmith Giant Hammer
+ 812000   1 1 Hammer of Vamos
+ 850000   1 3 Great Club
+ 851000   1 1 Grant
+ 852000   1 3 Demon's Great Hammer
+ 854000   1 1 Dragon Tooth
+ 855000   1 3 Large Club
+ 856000   1 1 Smough's Hammer
+ 901000   1 3 Caestus
+ 902000   1 3 Claw
+ 903000   1 1 Dragon Bone Fist
+ 904000   1 0 Dark Hand
+1000000   1 3 Spear
+1001000   1 3 Winged Spear
+1002000   1 3 Partizan
+1003000   1 1 Demon's Spear
+1004000   1 1 Channeler's Trident
+1006000   1 1 Silver Knight Spear
+1050000   1 3 Pike
+1051000   1 1 Dragonslayer Spear
+1052000   1 1 Moonlight Butterfly Horn
+1100000   1 3 Halberd
+1101000   1 1 Giant's Halberd
+1102000   1 1 Titanite Catch Pole
+1103000   1 3 Gargoyle's Halberd
+1105000   1 1 Black Knight Halberd
+1106000   1 3 Lucerne 
+1107000   1 3 Scythe
+1150000   1 3 Great Scythe
+1151000   1 1 Lifehunt Scythe
+1600000   1 3 Whip
+1601000   1 3 Notched Whip
+9010000   1 1 Gold Tracer
+9011000   1 1 Dark Silver Tracer
+9012000   1 1 Abyss Greatsword
+9015000   1 1 Stone Greataxe
+9016000   1 3 Four-pronged Plow
+9019000   1 3 Guardian Tail
+9020000   1 1 Obsidian Greatsword

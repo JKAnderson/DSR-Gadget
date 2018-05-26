@@ -1,0 +1,41 @@
+    100   1 0 Havel's Ring
+    101   1 0 Red Tearstone Ring
+    102   1 0 Darkmoon Blade Covenant Ring
+    103   1 0 Cat Covenant Ring
+    104   1 0 Cloranthy Ring
+    105   1 0 Flame Stoneplate Ring
+    106   1 0 Thunder Stoneplate Ring
+    107   1 0 Spell Stoneplate Ring
+    108   1 0 Speckled Stoneplate Ring
+    109   1 0 Bloodbite Ring
+    110   1 0 Poisonbite Ring
+    111   1 0 Tiny Being's Ring
+    113   1 0 Cursebite Ring
+    114   1 0 White Seance Ring
+    115   1 0 Bellowing Dragoncrest Ring
+    116   1 0 Dusk Crown Ring
+    117   1 0 Hornet Ring
+    119   1 0 Hawk Ring
+    120   1 0 Ring of Steel Protection
+    121   1 0 Covetous Gold Serpent Ring
+    122   1 0 Covetous Silver Serpent Ring
+    123   1 0 Slumbering Dragoncrest Ring
+    124   1 0 Ring of Fog
+    125   1 0 Rusted Iron Ring
+    126   1 0 Ring of Sacrifice
+    127   1 0 Rare Ring of Sacrifice
+    128   1 0 Dark Wood Grain Ring
+    130   1 0 Ring of the Sun Princess
+    137   1 0 Old Witch's Ring
+    138   1 0 Covenant of Artorias
+    139   1 0 Orange Charred Ring
+    141   1 0 Lingering Dragoncrest Ring
+    142   1 0 Ring of the Evil Eye
+    143   1 0 Ring of Favor and Protection
+    144   1 0 Leo Ring
+    145   1 0 East Wood Grain Ring
+    146   1 0 Wolf Ring
+    147   1 0 Blue Tearstone Ring
+    148   1 0 Ring of the Sun's Firstborn
+    149   1 0 Darkmoon Seance Ring
+    150   1 0 Calamity Ring

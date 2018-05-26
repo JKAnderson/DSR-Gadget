@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DSR_Gadget
@@ -14,9 +11,25 @@ namespace DSR_Gadget
         [STAThread]
         static void Main()
         {
+            Properties.Settings settings = Properties.Settings.Default;
+            if (settings.UpgradeRequired)
+            {
+                settings.Upgrade();
+                // First run
+                if (settings.UpgradeRequired)
+                    MessageBox.Show("DS1 had no anticheat whatsoever. DSR does.\n\n"
+                        + "Do not use Gadget while online, and revert your save after use "
+                        + "if you do anything even remotely sketchy and plan to go online in the future.\n\n"
+                        + "If you get bunned, it's not my fault.",
+                        "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                settings.UpgradeRequired = false;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
+
+            settings.Save();
         }
     }
 }
