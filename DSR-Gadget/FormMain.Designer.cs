@@ -551,12 +551,12 @@
             // 
             this.nudStoredAngle.Location = new System.Drawing.Point(219, 110);
             this.nudStoredAngle.Maximum = new decimal(new int[] {
-            360,
+            365,
             0,
             0,
             0});
             this.nudStoredAngle.Minimum = new decimal(new int[] {
-            360,
+            5,
             0,
             0,
             -2147483648});
@@ -590,12 +590,12 @@
             this.nudStableAngle.Enabled = false;
             this.nudStableAngle.Location = new System.Drawing.Point(138, 110);
             this.nudStableAngle.Maximum = new decimal(new int[] {
-            360,
+            365,
             0,
             0,
             0});
             this.nudStableAngle.Minimum = new decimal(new int[] {
-            360,
+            5,
             0,
             0,
             -2147483648});
@@ -629,12 +629,12 @@
             this.nudPosAngle.Enabled = false;
             this.nudPosAngle.Location = new System.Drawing.Point(57, 110);
             this.nudPosAngle.Maximum = new decimal(new int[] {
-            360,
+            365,
             0,
             0,
             0});
             this.nudPosAngle.Minimum = new decimal(new int[] {
-            360,
+            5,
             0,
             0,
             -2147483648});

@@ -9,3 +9,7 @@ Requires [.NET 4.7.2](https://www.microsoft.com/net/download/thank-you/net472) -
 [Octokit](https://github.com/octokit/octokit.net) by GitHub
 
 [Semver](https://github.com/maxhauser/semver) by Max Hauser
+
+# Changelog
+### 1.1
+* Fixed crash with out of range player angle

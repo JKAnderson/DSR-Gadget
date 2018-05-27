@@ -1,5 +1,5 @@
 
---| DSR Gadget 1.0
+--| DSR Gadget 1.1
 --| By Pav & TKGP
 --| https://github.com/JKAnderson/DSR-Gadget
 
@@ -18,3 +18,9 @@ https://github.com/octokit/octokit.net
 
 Semver by Max Hauser
 https://github.com/maxhauser/semver
+
+
+--| Changelog
+
+1.1
+	Fixed crash with out of range player angle
