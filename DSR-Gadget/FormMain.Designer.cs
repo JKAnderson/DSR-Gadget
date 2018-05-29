@@ -42,6 +42,7 @@
             this.cbxDeathCam = new System.Windows.Forms.CheckBox();
             this.cbxGravity = new System.Windows.Forms.CheckBox();
             this.gbxPosition = new System.Windows.Forms.GroupBox();
+            this.cbxRestoreState = new System.Windows.Forms.CheckBox();
             this.lblPosAngle = new System.Windows.Forms.Label();
             this.nudPosZ = new System.Windows.Forms.NumericUpDown();
             this.lblPosStored = new System.Windows.Forms.Label();
@@ -191,7 +192,6 @@
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
             this.lblUpdate = new System.Windows.Forms.Label();
             this.llbUpdate = new System.Windows.Forms.LinkLabel();
-            this.cbxRestoreState = new System.Windows.Forms.CheckBox();
             this.tclMain.SuspendLayout();
             this.tpgPlayer.SuspendLayout();
             this.gbxOther.SuspendLayout();
@@ -422,6 +422,18 @@
             this.gbxPosition.TabIndex = 2;
             this.gbxPosition.TabStop = false;
             this.gbxPosition.Text = "Position";
+            // 
+            // cbxRestoreState
+            // 
+            this.cbxRestoreState.AutoSize = true;
+            this.cbxRestoreState.Checked = true;
+            this.cbxRestoreState.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxRestoreState.Location = new System.Drawing.Point(219, 165);
+            this.cbxRestoreState.Name = "cbxRestoreState";
+            this.cbxRestoreState.Size = new System.Drawing.Size(87, 17);
+            this.cbxRestoreState.TabIndex = 41;
+            this.cbxRestoreState.Text = "Include state";
+            this.cbxRestoreState.UseVisualStyleBackColor = true;
             // 
             // lblPosAngle
             // 
@@ -2350,18 +2362,7 @@
             this.llbUpdate.TabStop = true;
             this.llbUpdate.Text = "Click to download";
             this.llbUpdate.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // cbxRestoreState
-            // 
-            this.cbxRestoreState.AutoSize = true;
-            this.cbxRestoreState.Checked = true;
-            this.cbxRestoreState.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxRestoreState.Location = new System.Drawing.Point(219, 165);
-            this.cbxRestoreState.Name = "cbxRestoreState";
-            this.cbxRestoreState.Size = new System.Drawing.Size(87, 17);
-            this.cbxRestoreState.TabIndex = 41;
-            this.cbxRestoreState.Text = "Include state";
-            this.cbxRestoreState.UseVisualStyleBackColor = true;
+            this.llbUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbUpdate_LinkClicked);
             // 
             // FormMain
             // 

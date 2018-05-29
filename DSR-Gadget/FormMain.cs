@@ -1,6 +1,7 @@
 ﻿using Octokit;
 using Semver;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -55,6 +56,11 @@ namespace DSR_Gadget
             {
                 lblUpdate.Text = "Current app version unknown";
             }
+        }
+
+        private void llbUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(e.Link.LinkData.ToString());
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
