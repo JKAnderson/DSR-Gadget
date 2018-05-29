@@ -1,3 +1,4 @@
+1396000   1 0 Skull Lantern
 1400000   1 4 East-West Shield
 1401000   1 4 Wooden Shield
 1402000   1 4 Large Leather Shield

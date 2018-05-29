@@ -1,5 +1,5 @@
-﻿using Microsoft.Win32.SafeHandles;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -8,52 +8,60 @@ namespace DSR_Gadget
     class DSRInterface
     {
         private const uint PROCESS_ALL_ACCESS = 0x1F0FFF;
-        private const uint MEM_COMMIT_RESERVE = 0x1000 | 0x2000;
+        private const uint MEM_COMMIT = 0x1000;
+        private const uint MEM_RESERVE = 0x2000;
         private const uint MEM_RELEASE = 0x8000;
         private const uint PAGE_READWRITE = 0x4;
         private const uint PAGE_EXECUTE_READWRITE = 0x40;
+        private const uint PAGE_EXECUTE_ANY = 0xF0;
+        private const uint PAGE_GUARD = 0x100;
 
         [DllImport("kernel32.dll")]
-        private static extern IntPtr OpenProcess(uint dwDesiredAccess, bool bInheritHandle, uint dwProcessId);
+        private static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, uint lpNumberOfBytesRead);
 
         [DllImport("kernel32.dll")]
-        private static extern bool ReadProcessMemory(SafeProcessHandle hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, uint lpNumberOfBytesRead);
+        private static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, uint lpNumberOfBytesWritten);
 
         [DllImport("kernel32.dll")]
-        private static extern bool WriteProcessMemory(SafeProcessHandle hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, uint nSize, uint lpNumberOfBytesWritten);
+        private static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
 
         [DllImport("kernel32.dll")]
-        private static extern IntPtr VirtualAllocEx(SafeProcessHandle hProcess, IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
+        private static extern bool VirtualFreeEx(IntPtr hProcess, IntPtr lpAddress, uint dwSize, uint dwFreeType);
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern uint VirtualQueryEx(IntPtr hProcess, IntPtr lpAddress, out MEMORY_BASIC_INFORMATION lpBuffer, uint dwLength);
+
+        [StructLayout(LayoutKind.Sequential)]
+        protected struct MEMORY_BASIC_INFORMATION
+        {
+            public IntPtr BaseAddress;
+            public IntPtr AllocationBase;
+            public uint AllocationProtect;
+            public ulong RegionSize;
+            public uint State;
+            public uint Protect;
+            public uint Type;
+        }
 
         [DllImport("kernel32.dll")]
-        private static extern bool VirtualFreeEx(SafeProcessHandle hProcess, IntPtr lpAddress, uint dwSize, uint dwFreeType);
-
-        [DllImport("kernel32.dll")]
-        private static extern IntPtr CreateRemoteThread(SafeProcessHandle hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+        private static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
 
         [DllImport("kernel32.dll")]
         private static extern int WaitForSingleObject(IntPtr hHandle, uint dwMilliseconds);
 
-        public static DSRInterface Attach(Process process)
+
+        private Process process;
+        private IntPtr handle;
+
+        public DSRInterface(Process setProcess)
         {
-            DSRInterface result = null;
-            IntPtr handle = OpenProcess(PROCESS_ALL_ACCESS, false, (uint)process.Id);
-            if (handle != IntPtr.Zero)
-                result = new DSRInterface(new SafeProcessHandle(handle, true));
-            return result;
-        }
-
-
-        private SafeProcessHandle handle;
-
-        private DSRInterface(SafeProcessHandle setHandle)
-        {
-            handle = setHandle;
+            process = setProcess;
+            handle = process.Handle;
         }
 
         public void Close()
         {
-            handle.Close();
+            process.Close();
         }
 
         private byte[] ReadProcessMemory(IntPtr address, uint size)
@@ -70,7 +78,7 @@ namespace DSR_Gadget
 
         private IntPtr VirtualAllocEx(int size, uint protect = PAGE_READWRITE)
         {
-            return VirtualAllocEx(handle, IntPtr.Zero, (uint)size, MEM_COMMIT_RESERVE, protect);
+            return VirtualAllocEx(handle, IntPtr.Zero, (uint)size, MEM_COMMIT | MEM_RESERVE, protect);
         }
 
         private bool VirtualFreeEx(IntPtr address)
@@ -100,6 +108,73 @@ namespace DSR_Gadget
             IntPtr thread = CreateRemoteThread(address);
             WaitForSingleObject(thread, 0xFFFFFFFF);
             VirtualFreeEx(address);
+        }
+
+        public IntPtr AOBScan(byte?[] aob)
+        {
+            List<MEMORY_BASIC_INFORMATION> memRegions = new List<MEMORY_BASIC_INFORMATION>();
+            IntPtr memRegionAddr = process.MainModule.BaseAddress;
+            IntPtr mainModuleEnd = process.MainModule.BaseAddress + process.MainModule.ModuleMemorySize;
+            uint queryResult;
+            do
+            {
+                MEMORY_BASIC_INFORMATION memInfo = new MEMORY_BASIC_INFORMATION();
+                queryResult = VirtualQueryEx(handle, memRegionAddr, out memInfo, (uint)Marshal.SizeOf(memInfo));
+                if (queryResult != 0)
+                {
+                    if ((memInfo.State & MEM_COMMIT) != 0 && (memInfo.Protect & PAGE_GUARD) == 0 && (memInfo.Protect & PAGE_EXECUTE_ANY) != 0)
+                        memRegions.Add(memInfo);
+                    memRegionAddr = (IntPtr)((ulong)memInfo.BaseAddress.ToInt64() + memInfo.RegionSize);
+                }
+            } while (queryResult != 0 && memRegionAddr.ToInt64() < mainModuleEnd.ToInt64());
+
+            IntPtr result = IntPtr.Zero;
+            foreach (MEMORY_BASIC_INFORMATION memRegion in memRegions)
+            {
+                byte[] bytes = ReadProcessMemory(memRegion.BaseAddress, (uint)memRegion.RegionSize);
+                for (int i = 0; i < bytes.Length - aob.Length; i++)
+                {
+                    bool found = true;
+                    for (int j = 0; j < aob.Length; j++)
+                    {
+                        if (aob[j] != null && aob[j] != bytes[i + j])
+                        {
+                            found = false;
+                            break;
+                        }
+                    }
+
+                    if (found)
+                    {
+                        result = memRegion.BaseAddress + i;
+                        break;
+                    }
+                }
+
+                if (result != IntPtr.Zero)
+                    break;
+            }
+
+            if (result == IntPtr.Zero)
+                throw new ArgumentException("AOB not found: " + aob.ToString());
+            return result;
+        }
+
+        public IntPtr AOBScan(byte?[] aob, int offset1, int offset2)
+        {
+            IntPtr result = AOBScan(aob);
+            if (result != IntPtr.Zero)
+            {
+                result = result + ReadInt32(result + offset1) + offset2;
+            }
+            return result;
+        }
+
+        public IntPtr ResolveAddress(IntPtr address, params int[] offsets)
+        {
+            foreach (int offset in offsets)
+                address = ReadIntPtr(address) + offset;
+            return ReadIntPtr(address);
         }
 
         public byte[] ReadBytes(IntPtr address, int size)
@@ -170,13 +245,6 @@ namespace DSR_Gadget
         public IntPtr ReadIntPtr(IntPtr address)
         {
             return (IntPtr)ReadInt64(address);
-        }
-
-        public IntPtr ResolveAddress(IntPtr address, params int[] offsets)
-        {
-            foreach (int offset in offsets)
-                address = ReadIntPtr(address) + offset;
-            return ReadIntPtr(address);
         }
 
         public bool ReadFlag32(IntPtr address, uint mask)

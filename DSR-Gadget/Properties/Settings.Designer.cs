@@ -358,5 +358,29 @@ namespace DSR_Gadget.Properties {
                 this["HotkeyDeadMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool RestoreState {
+            get {
+                return ((bool)(this["RestoreState"]));
+            }
+            set {
+                this["RestoreState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Warned {
+            get {
+                return ((bool)(this["Warned"]));
+            }
+            set {
+                this["Warned"] = value;
+            }
+        }
     }
 }

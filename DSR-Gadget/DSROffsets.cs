@@ -1,13 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace DSR_Gadget
 {
     class DSROffsets
     {
-        public static readonly IntPtr CheckVersion = (IntPtr)0x140000080;
+        public static byte?[] CamManBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 63 D1 48 8B 44 D0 08 C3");
+        public IntPtr CamManBasePtr;
+        public static int CamManOffset = 0x10;
+        public enum CamMan
+        {
 
-        public IntPtr GroupMaskAddr = (IntPtr)0x141AA1DB0;
+        }
+
+        public static byte?[] GroupMaskAOB = getAOB("80 3D ? ? ? ? 00 BE 00 00 00 80");
+        public IntPtr GroupMaskAddr;
         public enum GroupMask
         {
             Map = 0x0,
@@ -17,7 +24,8 @@ namespace DSR_Gadget
             Cutscenes = 0x4,
         }
 
-        public IntPtr GraphicsDataPtr = (IntPtr)0x141BDE5C0;
+        public static byte?[] GraphicsDataAOB = getAOB("48 8B 05 ? ? ? ? 48 8B 48 08 48 8B 01 48 8B 40 58");
+        public IntPtr GraphicsDataPtr;
         public static int GraphicsDataOffset = 0x738;
         public enum GraphicsData
         {
@@ -32,7 +40,8 @@ namespace DSR_Gadget
             FilterHue = 0x36C,
         }
 
-        public IntPtr ChrClassWarpPtr = (IntPtr)0x141CEA4B8;
+        public static byte?[] ChrClassWarpAOB = getAOB("48 8B 05 ? ? ? ? 66 0F 7F 80 90 0B 00 00");
+        public IntPtr ChrClassWarpPtr;
         public enum ChrClassWarp
         {
             LastBonfire = 0xB24,
@@ -42,7 +51,8 @@ namespace DSR_Gadget
             StableAngle = 0xB9C,
         }
 
-        public IntPtr WorldChrBasePtr = (IntPtr)0x141CEE830;
+        public static byte?[] WorldChrBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 8B 48 68 48 85 C9 0F 84 ? ? ? ? 48 39 5E 10 0F 84 ? ? ? ? 48");
+        public IntPtr WorldChrBasePtr;
         public enum WorldChrBase
         {
             ChrData1 = 0x68,
@@ -130,7 +140,8 @@ namespace DSR_Gadget
             PosZ = 0x18,
         }
 
-        public IntPtr ChrDbgAddr = (IntPtr)0x141CEE849;
+        public static byte?[] ChrDbgAOB = getAOB("80 3D ? ? ? ? 00 48 8B 8F 58 02 00 00 0F B6 DB 0F 45 DE 48 85 C9 74 ? BA");
+        public IntPtr ChrDbgAddr;
         public enum ChrDbg
         {
             PlayerNoDead = 0x0,
@@ -150,13 +161,15 @@ namespace DSR_Gadget
             PlayerReload = 0x12,
         }
 
-        public IntPtr MenuManPtr = (IntPtr)0x141CFF7C8;
+        public static byte?[] MenuManAOB = getAOB("48 8B 05 ? ? ? ? 89 88 28 08 00 00 85 C9 ? ? C7 80 34 08 00 00 FF FF FF FF C3");
+        public IntPtr MenuManPtr;
         public enum MenuMan
         {
             MenuKick = 0x24C,
         }
 
-        public IntPtr ChrClassBasePtr = (IntPtr)0x141D00F50;
+        public static byte?[] ChrClassBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 85 C0 ? ? F3 0F 58 80 AC 00 00 00");
+        public IntPtr ChrClassBasePtr;
         public static int ChrData2Offset = 0x10;
         public enum ChrData2
         {
@@ -175,23 +188,25 @@ namespace DSR_Gadget
             Class = 0xCE,
         }
 
-        public static DSROffsets V101 = new DSROffsets();
+        public static byte?[] ItemGetAOB = getAOB("48 89 5C 24 18 89 54 24 10 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 F9");
+        public IntPtr ItemGetAddr;
 
-        public struct DSRVersion
+        public static byte?[] BonfireWarpAOB = getAOB("48 89 5C 24 08 57 48 83 EC 20 48 8B D9 8B FA 48 8B 49 08 48 85 C9 0F 84 ? ? ? ? E8 ? ? ? ? 48 8B 4B 08");
+        public IntPtr BonfireWarpAddr;
+
+        private static byte?[] getAOB(string text)
         {
-            public readonly string Name;
-            public readonly DSROffsets Offsets;
-
-            public DSRVersion(string name, DSROffsets offsets)
+            MatchCollection matches = Regex.Matches(text, @"\S+");
+            byte?[] aob = new byte?[matches.Count];
+            for (int i = 0; i < aob.Length; i++)
             {
-                Name = name;
-                Offsets = offsets;
+                Match match = matches[i];
+                if (match.Value == "?")
+                    aob[i] = null;
+                else
+                    aob[i] = Byte.Parse(match.Value, System.Globalization.NumberStyles.AllowHexSpecifier);
             }
+            return aob;
         }
-
-        public static readonly Dictionary<int, DSRVersion> Versions = new Dictionary<int, DSRVersion>()
-        {
-            [0x6AA8592B] = new DSRVersion("1.01", V101),
-        };
     }
 }

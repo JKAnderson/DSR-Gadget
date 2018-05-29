@@ -191,6 +191,7 @@
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
             this.lblUpdate = new System.Windows.Forms.Label();
             this.llbUpdate = new System.Windows.Forms.LinkLabel();
+            this.cbxRestoreState = new System.Windows.Forms.CheckBox();
             this.tclMain.SuspendLayout();
             this.tpgPlayer.SuspendLayout();
             this.gbxOther.SuspendLayout();
@@ -286,9 +287,9 @@
             this.gbxOther.Controls.Add(this.cbxCollision);
             this.gbxOther.Controls.Add(this.cbxDeathCam);
             this.gbxOther.Controls.Add(this.cbxGravity);
-            this.gbxOther.Location = new System.Drawing.Point(6, 293);
+            this.gbxOther.Location = new System.Drawing.Point(6, 316);
             this.gbxOther.Name = "gbxOther";
-            this.gbxOther.Size = new System.Drawing.Size(384, 188);
+            this.gbxOther.Size = new System.Drawing.Size(384, 121);
             this.gbxOther.TabIndex = 3;
             this.gbxOther.TabStop = false;
             this.gbxOther.Text = "Other";
@@ -393,6 +394,7 @@
             // gbxPosition
             // 
             this.gbxPosition.AutoSize = true;
+            this.gbxPosition.Controls.Add(this.cbxRestoreState);
             this.gbxPosition.Controls.Add(this.lblPosAngle);
             this.gbxPosition.Controls.Add(this.nudPosZ);
             this.gbxPosition.Controls.Add(this.lblPosStored);
@@ -416,7 +418,7 @@
             this.gbxPosition.Controls.Add(this.btnPosRestore);
             this.gbxPosition.Location = new System.Drawing.Point(6, 109);
             this.gbxPosition.Name = "gbxPosition";
-            this.gbxPosition.Size = new System.Drawing.Size(384, 178);
+            this.gbxPosition.Size = new System.Drawing.Size(384, 201);
             this.gbxPosition.TabIndex = 2;
             this.gbxPosition.TabStop = false;
             this.gbxPosition.Text = "Position";
@@ -2349,6 +2351,18 @@
             this.llbUpdate.Text = "Click to download";
             this.llbUpdate.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // cbxRestoreState
+            // 
+            this.cbxRestoreState.AutoSize = true;
+            this.cbxRestoreState.Checked = true;
+            this.cbxRestoreState.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxRestoreState.Location = new System.Drawing.Point(219, 165);
+            this.cbxRestoreState.Name = "cbxRestoreState";
+            this.cbxRestoreState.Size = new System.Drawing.Size(87, 17);
+            this.cbxRestoreState.TabIndex = 41;
+            this.cbxRestoreState.Text = "Include state";
+            this.cbxRestoreState.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2599,6 +2613,7 @@
         private System.Windows.Forms.CheckBox cbxAllNoAttack;
         private System.Windows.Forms.Label lblHotkeyDeadMode;
         private System.Windows.Forms.TextBox txtHotkeyDeadMode;
+        private System.Windows.Forms.CheckBox cbxRestoreState;
     }
 }
 

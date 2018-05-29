@@ -6,10 +6,20 @@ namespace DSR_Gadget
 {
     public partial class FormMain : Form
     {
+        private struct PlayerState
+        {
+            public bool Set;
+            public decimal Health, Stamina;
+            public bool DeathCam;
+            //public byte[] FollowCam;
+        }
+
         private List<int> unknownBonfires = new List<int>();
+        private PlayerState playerState;
 
         private void initPlayer()
         {
+            cbxRestoreState.Checked = settings.RestoreState;
             foreach (DSRBonfire bonfire in DSRBonfire.All)
                 cmbBonfire.Items.Add(bonfire);
             cmbBonfire.SelectedIndex = 0;
@@ -18,6 +28,7 @@ namespace DSR_Gadget
 
         private void savePlayer()
         {
+            settings.RestoreState = cbxRestoreState.Checked;
             settings.AnimSpeed = nudSpeed.Value;
         }
 
@@ -44,10 +55,10 @@ namespace DSR_Gadget
 
         private void updatePlayer()
         {
-            nudHealth.Value = (decimal)dsrProcess.GetHealth();
-            nudHealthMax.Value = (decimal)dsrProcess.GetHealthMax();
-            nudStamina.Value = (decimal)dsrProcess.GetStamina();
-            nudStaminaMax.Value = (decimal)dsrProcess.GetStaminaMax();
+            nudHealth.Value = dsrProcess.GetHealth();
+            nudHealthMax.Value = dsrProcess.GetHealthMax();
+            nudStamina.Value = dsrProcess.GetStamina();
+            nudStaminaMax.Value = dsrProcess.GetStaminaMax();
 
             dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
             nudPosX.Value = (decimal)x;
@@ -113,6 +124,12 @@ namespace DSR_Gadget
             nudStoredY.Value = nudPosY.Value;
             nudStoredZ.Value = nudPosZ.Value;
             nudStoredAngle.Value = nudPosAngle.Value;
+
+            playerState.Health = nudHealth.Value;
+            playerState.Stamina = nudStamina.Value;
+            //playerState.FollowCam = dsrProcess.DumpCamMan();
+            playerState.DeathCam = cbxDeathCam.Checked;
+            playerState.Set = true;
         }
 
         private void btnPosRestore_Click(object sender, EventArgs e)
@@ -127,6 +144,20 @@ namespace DSR_Gadget
             float z = (float)nudStoredZ.Value;
             float angle = degreeToAngle(nudStoredAngle.Value);
             dsrProcess.PosWarp(x, y, z, angle);
+
+            if (playerState.Set)
+            {
+                // Two frames for safety, wait until after warp
+                System.Threading.Thread.Sleep(1000 / 15);
+                //dsrProcess.UndumpCamMan(playerState.FollowCam);
+
+                if (cbxRestoreState.Checked)
+                {
+                    nudHealth.Value = playerState.Health;
+                    nudStamina.Value = playerState.Stamina;
+                    cbxDeathCam.Checked = playerState.DeathCam;
+                }
+            }
         }
 
         private void cbxGravity_CheckedChanged(object sender, EventArgs e)

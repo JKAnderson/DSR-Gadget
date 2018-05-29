@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -29,6 +30,12 @@ namespace DSR_Gadget
         public readonly string Version;
         public readonly bool Valid;
 
+        public static readonly Dictionary<int, string> versions = new Dictionary<int, string>()
+        {
+            [0x4869400] = "1.01",
+            [0x496BE00] = "1.01.1",
+        };
+
         public DSRProcess(Process candidate)
         {
             process = candidate;
@@ -36,15 +43,32 @@ namespace DSR_Gadget
             Version = "Unknown";
             Valid = false;
 
-            dsrInterface = DSRInterface.Attach(process);
+            dsrInterface = new DSRInterface(process);
             if (dsrInterface != null)
             {
-                int versionValue = dsrInterface.ReadInt32(DSROffsets.CheckVersion);
-                if (DSROffsets.Versions.ContainsKey(versionValue))
+                int size = process.MainModule.ModuleMemorySize;
+                if (versions.ContainsKey(size))
+                    Version = versions[size];
+                offsets = new DSROffsets();
+
+                try
                 {
-                    Version = DSROffsets.Versions[versionValue].Name;
-                    offsets = DSROffsets.Versions[versionValue].Offsets;
-                    Valid = offsets != null;
+                    offsets.CamManBasePtr = dsrInterface.AOBScan(DSROffsets.CamManBaseAOB, 3, 7);
+                    offsets.GroupMaskAddr = dsrInterface.AOBScan(DSROffsets.GroupMaskAOB, 2, 7);
+                    offsets.GraphicsDataPtr = dsrInterface.AOBScan(DSROffsets.GraphicsDataAOB, 3, 7);
+                    offsets.ChrClassWarpPtr = dsrInterface.AOBScan(DSROffsets.ChrClassWarpAOB, 3, 7);
+                    offsets.WorldChrBasePtr = dsrInterface.AOBScan(DSROffsets.WorldChrBaseAOB, 3, 7);
+                    offsets.ChrDbgAddr = dsrInterface.AOBScan(DSROffsets.ChrDbgAOB, 2, 7);
+                    offsets.MenuManPtr = dsrInterface.AOBScan(DSROffsets.MenuManAOB, 3, 7);
+                    offsets.ChrClassBasePtr = dsrInterface.AOBScan(DSROffsets.ChrClassBaseAOB, 3, 7);
+
+                    offsets.ItemGetAddr = dsrInterface.AOBScan(DSROffsets.ItemGetAOB);
+                    offsets.BonfireWarpAddr = dsrInterface.AOBScan(DSROffsets.BonfireWarpAOB);
+                    Valid = true;
+                }
+                catch (ArgumentException)
+                {
+                    Valid = false;
                 }
             }
         }
@@ -80,13 +104,14 @@ namespace DSR_Gadget
 
         private struct DSRPointers
         {
-            public IntPtr ChrAnimData, ChrClassWarp, ChrData1, ChrData2, ChrMapData, ChrPosData,
+            public IntPtr CamMan, ChrAnimData, ChrClassWarp, ChrData1, ChrData2, ChrMapData, ChrPosData,
                 GraphicsData, MenuMan, WorldChrBase;
         }
         private DSRPointers pointers;
 
         public void LoadPointers()
         {
+            pointers.CamMan = dsrInterface.ResolveAddress(offsets.CamManBasePtr + DSROffsets.CamManOffset);
             pointers.ChrClassWarp = dsrInterface.ReadIntPtr(offsets.ChrClassWarpPtr);
             pointers.WorldChrBase = dsrInterface.ReadIntPtr(offsets.WorldChrBasePtr);
             pointers.ChrData1 = dsrInterface.ReadIntPtr(pointers.WorldChrBase + (int)DSROffsets.WorldChrBase.ChrData1);
@@ -189,12 +214,26 @@ namespace DSR_Gadget
         public void BonfireWarp()
         {
             byte[] asm = (byte[])DSRAssembly.BonfireWarp.Clone();
+            byte[] bytes = BitConverter.GetBytes(offsets.ChrClassBasePtr.ToInt64());
+            Array.Copy(bytes, 0, asm, 0x2, 8);
+            bytes = BitConverter.GetBytes(offsets.BonfireWarpAddr.ToInt64());
+            Array.Copy(bytes, 0, asm, 0x18, 8);
             dsrInterface.Execute(asm);
         }
 
         public void SetAnimSpeed(float value)
         {
             dsrInterface.WriteFloat(pointers.ChrAnimData + (int)DSROffsets.ChrAnimData.AnimSpeed, value);
+        }
+
+        public byte[] DumpCamMan()
+        {
+            return dsrInterface.ReadBytes(pointers.CamMan, 1024);
+        }
+
+        public void UndumpCamMan(byte[] bytes)
+        {
+            dsrInterface.WriteBytes(pointers.CamMan, bytes);
         }
         #endregion
 
@@ -276,7 +315,9 @@ namespace DSR_Gadget
 
         public void LevelUp(int vit, int att, int end, int str, int dex, int res, int intel, int fth, int level)
         {
-            IntPtr stats = dsrInterface.Allocate(0x300);
+            throw new NotImplementedException("LevelUp is not AOB-ified");
+
+            /*IntPtr stats = dsrInterface.Allocate(0x300);
             dsrInterface.WriteInt32(stats + 0x268 + 0x0, vit);
             dsrInterface.WriteInt32(stats + 0x268 + 0x4, att);
             dsrInterface.WriteInt32(stats + 0x268 + 0x8, end);
@@ -298,7 +339,7 @@ namespace DSR_Gadget
             Array.Copy(bytes, 0, asm, 0xC, 8);
 
             dsrInterface.Execute(asm);
-            dsrInterface.Free(stats);
+            dsrInterface.Free(stats);*/
         }
         #endregion
 
@@ -313,6 +354,10 @@ namespace DSR_Gadget
             Array.Copy(bytes, 0, asm, 0x7, 4);
             bytes = BitConverter.GetBytes(id);
             Array.Copy(bytes, 0, asm, 0xD, 4);
+            bytes = BitConverter.GetBytes(offsets.ChrClassBasePtr.ToInt64());
+            Array.Copy(bytes, 0, asm, 0x19, 8);
+            bytes = BitConverter.GetBytes(offsets.ItemGetAddr.ToInt64());
+            Array.Copy(bytes, 0, asm, 0x46, 8);
 
             dsrInterface.Execute(asm);
         }

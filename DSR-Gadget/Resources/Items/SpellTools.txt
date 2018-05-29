@@ -16,6 +16,5 @@
 1365000   1 0 Sunlight Talisman
 1366000   1 0 Darkmoon Talisman
 1367000   1 0 Velka's Talisman
-1396000   1 0 Skull Lantern
 9017000   1 0 Manus Catalyst
 9018000   1 0 Oolacile Catalyst

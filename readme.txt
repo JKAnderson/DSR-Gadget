@@ -1,5 +1,5 @@
 
---| DSR Gadget 1.1
+--| DSR Gadget 1.2
 --| By Pav & TKGP
 --| https://github.com/JKAnderson/DSR-Gadget
 
@@ -21,6 +21,11 @@ https://github.com/maxhauser/semver
 
 
 --| Changelog
+
+1.2
+	Supports 1.01.1 and hopefully all future versions automatically
+	Option to restore state with position (but not camera, yet)
+	Add cut covenant items to spawner
 
 1.1
 	Fixed crash with out of range player angle

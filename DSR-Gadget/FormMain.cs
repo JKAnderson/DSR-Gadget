@@ -80,7 +80,10 @@ namespace DSR_Gadget
                 if (result != null)
                 {
                     lblVersionValue.Text = result.Version;
-                    lblVersionValue.ForeColor = result.Valid ? Color.DarkGreen : Color.DarkRed;
+                    if (result.Valid)
+                        lblVersionValue.ForeColor = result.Version == "Unknown" ? Color.DarkOrange : Color.DarkGreen;
+                    else
+                        lblVersionValue.ForeColor = Color.DarkRed;
                     dsrProcess = result;
                     tmrUpdate.Interval = 16;
                 }
