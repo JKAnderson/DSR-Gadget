@@ -54,6 +54,7 @@ namespace DSR_Gadget
                 try
                 {
                     offsets.CamManBasePtr = dsrInterface.AOBScan(DSROffsets.CamManBaseAOB, 3, 7);
+                    offsets.ChrFollowCamPtr = dsrInterface.AOBScan(DSROffsets.ChrFollowCamAOB, 3, 7);
                     offsets.GroupMaskAddr = dsrInterface.AOBScan(DSROffsets.GroupMaskAOB, 2, 7);
                     offsets.GraphicsDataPtr = dsrInterface.AOBScan(DSROffsets.GraphicsDataAOB, 3, 7);
                     offsets.ChrClassWarpPtr = dsrInterface.AOBScan(DSROffsets.ChrClassWarpAOB, 3, 7);
@@ -104,7 +105,7 @@ namespace DSR_Gadget
 
         private struct DSRPointers
         {
-            public IntPtr CamMan, ChrAnimData, ChrClassWarp, ChrData1, ChrData2, ChrMapData, ChrPosData,
+            public IntPtr CamMan, ChrAnimData, ChrClassWarp, ChrData1, ChrData2, ChrFollowCam, ChrMapData, ChrPosData,
                 GraphicsData, MenuMan, WorldChrBase;
         }
         private DSRPointers pointers;
@@ -113,6 +114,7 @@ namespace DSR_Gadget
         {
             pointers.CamMan = dsrInterface.ResolveAddress(offsets.CamManBasePtr + DSROffsets.CamManOffset);
             pointers.ChrClassWarp = dsrInterface.ReadIntPtr(offsets.ChrClassWarpPtr);
+            pointers.ChrFollowCam = dsrInterface.ResolveAddress(offsets.ChrFollowCamPtr, DSROffsets.ChrFollowCamOffset1, DSROffsets.ChrFollowCamOffset1);
             pointers.WorldChrBase = dsrInterface.ReadIntPtr(offsets.WorldChrBasePtr);
             pointers.ChrData1 = dsrInterface.ReadIntPtr(pointers.WorldChrBase + (int)DSROffsets.WorldChrBase.ChrData1);
             pointers.ChrMapData = dsrInterface.ReadIntPtr(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrMapData);
@@ -228,12 +230,12 @@ namespace DSR_Gadget
 
         public byte[] DumpCamMan()
         {
-            return dsrInterface.ReadBytes(pointers.CamMan, 1024);
+            return dsrInterface.ReadBytes(pointers.ChrFollowCam, 1024);
         }
 
         public void UndumpCamMan(byte[] bytes)
         {
-            dsrInterface.WriteBytes(pointers.CamMan, bytes);
+            dsrInterface.WriteBytes(pointers.ChrFollowCam, bytes);
         }
         #endregion
 

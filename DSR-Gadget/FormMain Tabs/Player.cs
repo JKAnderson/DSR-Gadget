@@ -11,7 +11,7 @@ namespace DSR_Gadget
             public bool Set;
             public decimal Health, Stamina;
             public bool DeathCam;
-            //public byte[] FollowCam;
+            public byte[] FollowCam;
         }
 
         private List<int> unknownBonfires = new List<int>();
@@ -127,7 +127,7 @@ namespace DSR_Gadget
 
             playerState.Health = nudHealth.Value;
             playerState.Stamina = nudStamina.Value;
-            //playerState.FollowCam = dsrProcess.DumpCamMan();
+            playerState.FollowCam = dsrProcess.DumpCamMan();
             playerState.DeathCam = cbxDeathCam.Checked;
             playerState.Set = true;
         }
@@ -149,7 +149,7 @@ namespace DSR_Gadget
             {
                 // Two frames for safety, wait until after warp
                 System.Threading.Thread.Sleep(1000 / 15);
-                //dsrProcess.UndumpCamMan(playerState.FollowCam);
+                dsrProcess.UndumpCamMan(playerState.FollowCam);
 
                 if (cbxRestoreState.Checked)
                 {

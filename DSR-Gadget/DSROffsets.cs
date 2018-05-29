@@ -8,10 +8,11 @@ namespace DSR_Gadget
         public static byte?[] CamManBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 63 D1 48 8B 44 D0 08 C3");
         public IntPtr CamManBasePtr;
         public static int CamManOffset = 0x10;
-        public enum CamMan
-        {
 
-        }
+        public static byte?[] ChrFollowCamAOB = getAOB("48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B 4E 68 48 8B 05 ? ? ? ? 48 89 48 60");
+        public IntPtr ChrFollowCamPtr;
+        public static int ChrFollowCamOffset1 = 0x60;
+        public static int ChrFollowCamOffset2 = 0x60;
 
         public static byte?[] GroupMaskAOB = getAOB("80 3D ? ? ? ? 00 BE 00 00 00 80");
         public IntPtr GroupMaskAddr;
