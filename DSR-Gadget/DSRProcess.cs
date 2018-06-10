@@ -34,6 +34,7 @@ namespace DSR_Gadget
         {
             [0x4869400] = "1.01",
             [0x496BE00] = "1.01.1",
+            [0x37CB400] = "1.01.2",
         };
 
         public DSRProcess(Process candidate)
@@ -49,22 +50,25 @@ namespace DSR_Gadget
                 int size = process.MainModule.ModuleMemorySize;
                 if (versions.ContainsKey(size))
                     Version = versions[size];
-                offsets = new DSROffsets();
+                else
+                    Version = "0x" + size.ToString("X");
+                offsets = DSROffsets.GetOffsets(size);
 
                 try
                 {
-                    offsets.CamManBasePtr = dsrInterface.AOBScan(DSROffsets.CamManBaseAOB, 3, 7);
-                    offsets.ChrFollowCamPtr = dsrInterface.AOBScan(DSROffsets.ChrFollowCamAOB, 3, 7);
-                    offsets.GroupMaskAddr = dsrInterface.AOBScan(DSROffsets.GroupMaskAOB, 2, 7);
-                    offsets.GraphicsDataPtr = dsrInterface.AOBScan(DSROffsets.GraphicsDataAOB, 3, 7);
-                    offsets.ChrClassWarpPtr = dsrInterface.AOBScan(DSROffsets.ChrClassWarpAOB, 3, 7);
-                    offsets.WorldChrBasePtr = dsrInterface.AOBScan(DSROffsets.WorldChrBaseAOB, 3, 7);
-                    offsets.ChrDbgAddr = dsrInterface.AOBScan(DSROffsets.ChrDbgAOB, 2, 7);
-                    offsets.MenuManPtr = dsrInterface.AOBScan(DSROffsets.MenuManAOB, 3, 7);
-                    offsets.ChrClassBasePtr = dsrInterface.AOBScan(DSROffsets.ChrClassBaseAOB, 3, 7);
+                    DSRInterface.AOBScanner scanner = dsrInterface.GetAOBScanner();
+                    offsets.CamManBasePtr = scanner.Scan(DSROffsets.CamManBaseAOB, 3);
+                    offsets.ChrFollowCamPtr = scanner.Scan(DSROffsets.ChrFollowCamAOB, 3);
+                    offsets.GroupMaskAddr = scanner.Scan(DSROffsets.GroupMaskAOB, 2, 7);
+                    offsets.GraphicsDataPtr = scanner.Scan(DSROffsets.GraphicsDataAOB, 3);
+                    offsets.ChrClassWarpPtr = scanner.Scan(DSROffsets.ChrClassWarpAOB, 3);
+                    offsets.WorldChrBasePtr = scanner.Scan(DSROffsets.WorldChrBaseAOB, 3);
+                    offsets.ChrDbgAddr = scanner.Scan(DSROffsets.ChrDbgAOB, 2, 7);
+                    offsets.MenuManPtr = scanner.Scan(DSROffsets.MenuManAOB, 3);
+                    offsets.ChrClassBasePtr = scanner.Scan(DSROffsets.ChrClassBaseAOB, 3);
 
-                    offsets.ItemGetAddr = dsrInterface.AOBScan(DSROffsets.ItemGetAOB);
-                    offsets.BonfireWarpAddr = dsrInterface.AOBScan(DSROffsets.BonfireWarpAOB);
+                    offsets.ItemGetAddr = scanner.Scan(DSROffsets.ItemGetAOB);
+                    offsets.BonfireWarpAddr = scanner.Scan(DSROffsets.BonfireWarpAOB);
                     Valid = true;
                 }
                 catch (ArgumentException)
@@ -205,12 +209,12 @@ namespace DSR_Gadget
 
         public int GetLastBonfire()
         {
-            return dsrInterface.ReadInt32(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.LastBonfire);
+            return dsrInterface.ReadInt32(pointers.ChrClassWarp + offsets.ChrClassWarpLastBonfire);
         }
 
         public void SetLastBonfire(int value)
         {
-            dsrInterface.WriteInt32(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.LastBonfire, value);
+            dsrInterface.WriteInt32(pointers.ChrClassWarp + offsets.ChrClassWarpLastBonfire, value);
         }
 
         public void BonfireWarp()
@@ -228,12 +232,12 @@ namespace DSR_Gadget
             dsrInterface.WriteFloat(pointers.ChrAnimData + (int)DSROffsets.ChrAnimData.AnimSpeed, value);
         }
 
-        public byte[] DumpCamMan()
+        public byte[] DumpFollowCam()
         {
-            return dsrInterface.ReadBytes(pointers.ChrFollowCam, 1024);
+            return dsrInterface.ReadBytes(pointers.ChrFollowCam, 512);
         }
 
-        public void UndumpCamMan(byte[] bytes)
+        public void UndumpFollowCam(byte[] bytes)
         {
             dsrInterface.WriteBytes(pointers.ChrFollowCam, bytes);
         }

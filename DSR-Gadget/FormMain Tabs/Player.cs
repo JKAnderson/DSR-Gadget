@@ -127,7 +127,7 @@ namespace DSR_Gadget
 
             playerState.Health = nudHealth.Value;
             playerState.Stamina = nudStamina.Value;
-            playerState.FollowCam = dsrProcess.DumpCamMan();
+            playerState.FollowCam = dsrProcess.DumpFollowCam();
             playerState.DeathCam = cbxDeathCam.Checked;
             playerState.Set = true;
         }
@@ -149,7 +149,7 @@ namespace DSR_Gadget
             {
                 // Two frames for safety, wait until after warp
                 System.Threading.Thread.Sleep(1000 / 15);
-                dsrProcess.UndumpCamMan(playerState.FollowCam);
+                dsrProcess.UndumpFollowCam(playerState.FollowCam);
 
                 if (cbxRestoreState.Checked)
                 {

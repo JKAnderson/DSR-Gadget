@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace DSR_Gadget
@@ -41,11 +42,11 @@ namespace DSR_Gadget
             FilterHue = 0x36C,
         }
 
-        public static byte?[] ChrClassWarpAOB = getAOB("48 8B 05 ? ? ? ? 66 0F 7F 80 90 0B 00 00");
+        public static byte?[] ChrClassWarpAOB = getAOB("48 8B 05 ? ? ? ? 66 0F 7F 80 ? ? ? ? 0F 28 02 66 0F 7F 80 ? ? ? ? C6 80");
         public IntPtr ChrClassWarpPtr;
+        public int ChrClassWarpLastBonfire = 0xB24;
         public enum ChrClassWarp
         {
-            LastBonfire = 0xB24,
             StableX = 0xB90,
             StableY = 0xB94,
             StableZ = 0xB98,
@@ -209,5 +210,21 @@ namespace DSR_Gadget
             }
             return aob;
         }
+
+        public static DSROffsets GetOffsets(int moduleSize)
+        {
+            DSROffsets result = new DSROffsets();
+            if (!oldVersions.Contains(moduleSize))
+            {
+                result.ChrClassWarpLastBonfire = 0xB34;
+            }
+            return result;
+        }
+
+        private static readonly List<int> oldVersions = new List<int>()
+        {
+            0x4869400, // 1.01
+            0x496BE00, // 1.01.1
+        };
     }
 }

@@ -110,66 +110,6 @@ namespace DSR_Gadget
             VirtualFreeEx(address);
         }
 
-        public IntPtr AOBScan(byte?[] aob)
-        {
-            List<MEMORY_BASIC_INFORMATION> memRegions = new List<MEMORY_BASIC_INFORMATION>();
-            IntPtr memRegionAddr = process.MainModule.BaseAddress;
-            IntPtr mainModuleEnd = process.MainModule.BaseAddress + process.MainModule.ModuleMemorySize;
-            uint queryResult;
-            do
-            {
-                MEMORY_BASIC_INFORMATION memInfo = new MEMORY_BASIC_INFORMATION();
-                queryResult = VirtualQueryEx(handle, memRegionAddr, out memInfo, (uint)Marshal.SizeOf(memInfo));
-                if (queryResult != 0)
-                {
-                    if ((memInfo.State & MEM_COMMIT) != 0 && (memInfo.Protect & PAGE_GUARD) == 0 && (memInfo.Protect & PAGE_EXECUTE_ANY) != 0)
-                        memRegions.Add(memInfo);
-                    memRegionAddr = (IntPtr)((ulong)memInfo.BaseAddress.ToInt64() + memInfo.RegionSize);
-                }
-            } while (queryResult != 0 && memRegionAddr.ToInt64() < mainModuleEnd.ToInt64());
-
-            IntPtr result = IntPtr.Zero;
-            foreach (MEMORY_BASIC_INFORMATION memRegion in memRegions)
-            {
-                byte[] bytes = ReadProcessMemory(memRegion.BaseAddress, (uint)memRegion.RegionSize);
-                for (int i = 0; i < bytes.Length - aob.Length; i++)
-                {
-                    bool found = true;
-                    for (int j = 0; j < aob.Length; j++)
-                    {
-                        if (aob[j] != null && aob[j] != bytes[i + j])
-                        {
-                            found = false;
-                            break;
-                        }
-                    }
-
-                    if (found)
-                    {
-                        result = memRegion.BaseAddress + i;
-                        break;
-                    }
-                }
-
-                if (result != IntPtr.Zero)
-                    break;
-            }
-
-            if (result == IntPtr.Zero)
-                throw new ArgumentException("AOB not found: " + aob.ToString());
-            return result;
-        }
-
-        public IntPtr AOBScan(byte?[] aob, int offset1, int offset2)
-        {
-            IntPtr result = AOBScan(aob);
-            if (result != IntPtr.Zero)
-            {
-                result = result + ReadInt32(result + offset1) + offset2;
-            }
-            return result;
-        }
-
         public IntPtr ResolveAddress(IntPtr address, params int[] offsets)
         {
             foreach (int offset in offsets)
@@ -314,6 +254,85 @@ namespace DSR_Gadget
             else
                 flags &= ~mask;
             WriteUInt32(address, flags);
+        }
+
+        public AOBScanner GetAOBScanner()
+        {
+            return new AOBScanner(process, handle, this);
+        }
+
+        public class AOBScanner
+        {
+            private DSRInterface dsrInterface;
+            private List<MEMORY_BASIC_INFORMATION> memRegions;
+            private Dictionary<IntPtr, byte[]> readMemory;
+
+            public AOBScanner(Process process, IntPtr handle, DSRInterface setDSRInterface)
+            {
+                dsrInterface = setDSRInterface;
+                memRegions = new List<MEMORY_BASIC_INFORMATION>();
+                IntPtr memRegionAddr = process.MainModule.BaseAddress;
+                IntPtr mainModuleEnd = process.MainModule.BaseAddress + process.MainModule.ModuleMemorySize;
+                uint queryResult;
+
+                do
+                {
+                    MEMORY_BASIC_INFORMATION memInfo = new MEMORY_BASIC_INFORMATION();
+                    queryResult = VirtualQueryEx(handle, memRegionAddr, out memInfo, (uint)Marshal.SizeOf(memInfo));
+                    if (queryResult != 0)
+                    {
+                        if ((memInfo.State & MEM_COMMIT) != 0 && (memInfo.Protect & PAGE_GUARD) == 0 && (memInfo.Protect & PAGE_EXECUTE_ANY) != 0)
+                            memRegions.Add(memInfo);
+                        memRegionAddr = (IntPtr)((ulong)memInfo.BaseAddress.ToInt64() + memInfo.RegionSize);
+                    }
+                } while (queryResult != 0 && memRegionAddr.ToInt64() < mainModuleEnd.ToInt64());
+
+                readMemory = new Dictionary<IntPtr, byte[]>();
+                foreach (MEMORY_BASIC_INFORMATION memRegion in memRegions)
+                    readMemory[memRegion.BaseAddress] = dsrInterface.ReadBytes(memRegion.BaseAddress, (int)memRegion.RegionSize);
+            }
+
+            public IntPtr Scan(byte?[] aob)
+            {
+                List<IntPtr> results = new List<IntPtr>();
+                foreach (IntPtr baseAddress in readMemory.Keys)
+                {
+                    byte[] bytes = readMemory[baseAddress];
+
+                    for (int i = 0; i < bytes.Length - aob.Length; i++)
+                    {
+                        bool found = true;
+                        for (int j = 0; j < aob.Length; j++)
+                        {
+                            if (aob[j] != null && aob[j] != bytes[i + j])
+                            {
+                                found = false;
+                                break;
+                            }
+                        }
+
+                        if (found)
+                            results.Add(baseAddress + i);
+                    }
+                }
+
+                if (results.Count == 0)
+                    throw new ArgumentException("AOB not found: " + aob.ToString());
+                else if (results.Count > 1)
+                    throw new ArgumentException("AOB found " + results.Count + " times: " + aob.ToString());
+                return results[0];
+            }
+
+            public IntPtr Scan(byte?[] aob, int offset1, int offset2)
+            {
+                IntPtr result = Scan(aob);
+                return result + dsrInterface.ReadInt32(result + offset1) + offset2;
+            }
+
+            public IntPtr Scan(byte?[] aob, int offset)
+            {
+                return Scan(aob, offset, offset + 4);
+            }
         }
     }
 }
