@@ -1,9 +1,10 @@
 
---| DSR Gadget 1.2
+--| DSR Gadget 1.3
 --| By Pav & TKGP
 --| https://github.com/JKAnderson/DSR-Gadget
 
-A multi-purpose testing tool for Dark Souls: Remastered. Compatible with DSR App ver. 1.01.  
+A multi-purpose testing tool for Dark Souls: Remastered.
+Compatible with DSR App ver. 1.01, 1.01.1, 1.01.2, and hopefully future versions.
 Requires .NET 4.7.2: https://www.microsoft.com/net/download/thank-you/net472
 Windows 10 users should already have this.
 
@@ -21,6 +22,11 @@ https://github.com/maxhauser/semver
 
 
 --| Changelog
+
+1.3
+	Supports 1.01.2
+	Camera is restored with positions
+	The download link actually works now
 
 1.2
 	Supports 1.01.1 and hopefully all future versions automatically
