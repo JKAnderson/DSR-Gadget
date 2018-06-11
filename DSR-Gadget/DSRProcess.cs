@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace DSR_Gadget
 {
@@ -47,6 +48,7 @@ namespace DSR_Gadget
             dsrInterface = new DSRInterface(process);
             if (dsrInterface != null)
             {
+                Thread.Sleep(2000);
                 int size = process.MainModule.ModuleMemorySize;
                 if (versions.ContainsKey(size))
                     Version = versions[size];
@@ -92,9 +94,8 @@ namespace DSR_Gadget
         {
             if (Valid)
             {
-                IntPtr chrAnimData = dsrInterface.ResolveAddress(offsets.WorldChrBasePtr,
-                    (int)DSROffsets.WorldChrBase.ChrData1, (int)DSROffsets.ChrData1.ChrMapData, (int)DSROffsets.ChrMapData.ChrAnimData);
-                return chrAnimData != IntPtr.Zero;
+                IntPtr chrFollowCam = dsrInterface.ResolveAddress(offsets.ChrFollowCamPtr, DSROffsets.ChrFollowCamOffset1, DSROffsets.ChrFollowCamOffset1);
+                return chrFollowCam != IntPtr.Zero;
             }
             else
                 return false;
