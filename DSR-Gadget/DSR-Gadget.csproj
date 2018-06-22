@@ -62,6 +62,9 @@
     <Compile Include="DSRInterface.cs" />
     <Compile Include="DSROffsets.cs" />
     <Compile Include="DSRProcess.cs" />
+    <Compile Include="FormMain Tabs\Misc.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormMain Tabs\Cheats.cs">
       <SubType>Form</SubType>
     </Compile>

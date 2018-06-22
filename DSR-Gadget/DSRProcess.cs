@@ -48,7 +48,6 @@ namespace DSR_Gadget
             dsrInterface = new DSRInterface(process);
             if (dsrInterface != null)
             {
-                Thread.Sleep(2000);
                 int size = process.MainModule.ModuleMemorySize;
                 if (versions.ContainsKey(size))
                     Version = versions[size];
@@ -68,6 +67,7 @@ namespace DSR_Gadget
                     offsets.ChrDbgAddr = scanner.Scan(DSROffsets.ChrDbgAOB, 2, 7);
                     offsets.MenuManPtr = scanner.Scan(DSROffsets.MenuManAOB, 3);
                     offsets.ChrClassBasePtr = scanner.Scan(DSROffsets.ChrClassBaseAOB, 3);
+                    offsets.EventFlagPtr = scanner.Scan(DSROffsets.EventFlagsAOB, 3);
 
                     offsets.ItemGetAddr = scanner.Scan(DSROffsets.ItemGetAOB);
                     offsets.BonfireWarpAddr = scanner.Scan(DSROffsets.BonfireWarpAOB);
@@ -111,7 +111,7 @@ namespace DSR_Gadget
         private struct DSRPointers
         {
             public IntPtr CamMan, ChrAnimData, ChrClassWarp, ChrData1, ChrData2, ChrFollowCam, ChrMapData, ChrPosData,
-                GraphicsData, MenuMan, WorldChrBase;
+                EventFlags, GraphicsData, MenuMan, WorldChrBase;
         }
         private DSRPointers pointers;
 
@@ -128,6 +128,7 @@ namespace DSR_Gadget
             pointers.ChrData2 = dsrInterface.ResolveAddress(offsets.ChrClassBasePtr, DSROffsets.ChrData2Offset);
             pointers.GraphicsData = dsrInterface.ResolveAddress(offsets.GraphicsDataPtr, DSROffsets.GraphicsDataOffset);
             pointers.MenuMan = dsrInterface.ReadIntPtr(offsets.MenuManPtr);
+            pointers.EventFlags = dsrInterface.ResolveAddress(offsets.EventFlagPtr, DSROffsets.EventFlagsOffset);
         }
 
         #region Player
@@ -513,6 +514,75 @@ namespace DSR_Gadget
             dsrInterface.WriteFloat(pointers.GraphicsData + (int)DSROffsets.GraphicsData.FilterContrastB, contB);
             dsrInterface.WriteFloat(pointers.GraphicsData + (int)DSROffsets.GraphicsData.FilterSaturation, saturation);
             dsrInterface.WriteFloat(pointers.GraphicsData + (int)DSROffsets.GraphicsData.FilterHue, hue);
+        }
+        #endregion
+
+        #region Misc
+        private static Dictionary<string, int> eventFlagGroups = new Dictionary<string, int>()
+        {
+            {"0", 0x00000},
+            {"1", 0x00500},
+            {"5", 0x05F00},
+            {"6", 0x0B900},
+            {"7", 0x11300},
+        };
+
+        private static Dictionary<string, int> eventFlagAreas = new Dictionary<string, int>()
+        {
+            {"000", 00},
+            {"100", 01},
+            {"101", 02},
+            {"102", 03},
+            {"110", 04},
+            {"120", 05},
+            {"121", 06},
+            {"130", 07},
+            {"131", 08},
+            {"132", 09},
+            {"140", 10},
+            {"141", 11},
+            {"150", 12},
+            {"151", 13},
+            {"160", 14},
+            {"170", 15},
+            {"180", 16},
+            {"181", 17},
+        };
+
+        private IntPtr getEventFlagAddress(int ID, out uint mask)
+        {
+            string idString = ID.ToString("D8");
+            if (idString.Length == 8)
+            {
+                string group = idString.Substring(0, 1);
+                string area = idString.Substring(1, 3);
+                int section = Int32.Parse(idString.Substring(4, 1));
+                int number = Int32.Parse(idString.Substring(5, 3));
+
+                if (eventFlagGroups.ContainsKey(group) && eventFlagAreas.ContainsKey(area))
+                {
+                    int offset = eventFlagGroups[group];
+                    offset += eventFlagAreas[area] * 0x500;
+                    offset += section * 128;
+                    offset += (number - (number % 32)) / 8;
+
+                    mask = 0x80000000 >> (number % 32);
+                    return pointers.EventFlags + offset;
+                }
+            }
+            throw new ArgumentException("Unknown event flag ID: " + ID);
+        }
+
+        public bool ReadEventFlag(int ID)
+        {
+            IntPtr address = getEventFlagAddress(ID, out uint mask);
+            return dsrInterface.ReadFlag32(address, mask);
+        }
+
+        public void WriteEventFlag(int ID, bool value)
+        {
+            IntPtr address = getEventFlagAddress(ID, out uint mask);
+            dsrInterface.WriteFlag32(address, mask, value);
         }
         #endregion
 

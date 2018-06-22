@@ -192,6 +192,13 @@
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
             this.lblUpdate = new System.Windows.Forms.Label();
             this.llbUpdate = new System.Windows.Forms.LinkLabel();
+            this.tpgMisc = new System.Windows.Forms.TabPage();
+            this.gbxEventFlags = new System.Windows.Forms.GroupBox();
+            this.lblEventID = new System.Windows.Forms.Label();
+            this.txtEventFlag = new System.Windows.Forms.TextBox();
+            this.btnEventWrite = new System.Windows.Forms.Button();
+            this.cbxEventFlag = new System.Windows.Forms.CheckBox();
+            this.btnEventRead = new System.Windows.Forms.Button();
             this.tclMain.SuspendLayout();
             this.tpgPlayer.SuspendLayout();
             this.gbxOther.SuspendLayout();
@@ -243,6 +250,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudBrightnessG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBrightnessR)).BeginInit();
             this.tpgHotkeys.SuspendLayout();
+            this.tpgMisc.SuspendLayout();
+            this.gbxEventFlags.SuspendLayout();
             this.SuspendLayout();
             // 
             // tclMain
@@ -255,6 +264,7 @@
             this.tclMain.Controls.Add(this.tpgItems);
             this.tclMain.Controls.Add(this.tpgCheats);
             this.tclMain.Controls.Add(this.tpgGraphics);
+            this.tclMain.Controls.Add(this.tpgMisc);
             this.tclMain.Controls.Add(this.tpgHotkeys);
             this.tclMain.Location = new System.Drawing.Point(12, 44);
             this.tclMain.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
@@ -2364,6 +2374,83 @@
             this.llbUpdate.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.llbUpdate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbUpdate_LinkClicked);
             // 
+            // tpgMisc
+            // 
+            this.tpgMisc.Controls.Add(this.gbxEventFlags);
+            this.tpgMisc.Location = new System.Drawing.Point(4, 22);
+            this.tpgMisc.Name = "tpgMisc";
+            this.tpgMisc.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgMisc.Size = new System.Drawing.Size(396, 487);
+            this.tpgMisc.TabIndex = 7;
+            this.tpgMisc.Text = "Misc";
+            this.tpgMisc.UseVisualStyleBackColor = true;
+            // 
+            // gbxEventFlags
+            // 
+            this.gbxEventFlags.AutoSize = true;
+            this.gbxEventFlags.Controls.Add(this.btnEventRead);
+            this.gbxEventFlags.Controls.Add(this.cbxEventFlag);
+            this.gbxEventFlags.Controls.Add(this.btnEventWrite);
+            this.gbxEventFlags.Controls.Add(this.txtEventFlag);
+            this.gbxEventFlags.Controls.Add(this.lblEventID);
+            this.gbxEventFlags.Location = new System.Drawing.Point(6, 6);
+            this.gbxEventFlags.Name = "gbxEventFlags";
+            this.gbxEventFlags.Size = new System.Drawing.Size(384, 100);
+            this.gbxEventFlags.TabIndex = 0;
+            this.gbxEventFlags.TabStop = false;
+            this.gbxEventFlags.Text = "Event Flags";
+            // 
+            // lblEventID
+            // 
+            this.lblEventID.AutoSize = true;
+            this.lblEventID.Location = new System.Drawing.Point(6, 16);
+            this.lblEventID.Name = "lblEventID";
+            this.lblEventID.Size = new System.Drawing.Size(18, 13);
+            this.lblEventID.TabIndex = 0;
+            this.lblEventID.Text = "ID";
+            // 
+            // txtEventFlag
+            // 
+            this.txtEventFlag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEventFlag.Location = new System.Drawing.Point(6, 32);
+            this.txtEventFlag.Name = "txtEventFlag";
+            this.txtEventFlag.Size = new System.Drawing.Size(291, 20);
+            this.txtEventFlag.TabIndex = 1;
+            // 
+            // btnEventWrite
+            // 
+            this.btnEventWrite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEventWrite.Location = new System.Drawing.Point(303, 58);
+            this.btnEventWrite.Name = "btnEventWrite";
+            this.btnEventWrite.Size = new System.Drawing.Size(75, 23);
+            this.btnEventWrite.TabIndex = 2;
+            this.btnEventWrite.Text = "Write";
+            this.btnEventWrite.UseVisualStyleBackColor = true;
+            this.btnEventWrite.Click += new System.EventHandler(this.btnEventWrite_Click);
+            // 
+            // cbxEventFlag
+            // 
+            this.cbxEventFlag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxEventFlag.AutoSize = true;
+            this.cbxEventFlag.Location = new System.Drawing.Point(303, 34);
+            this.cbxEventFlag.Name = "cbxEventFlag";
+            this.cbxEventFlag.Size = new System.Drawing.Size(65, 17);
+            this.cbxEventFlag.TabIndex = 3;
+            this.cbxEventFlag.Text = "Enabled";
+            this.cbxEventFlag.UseVisualStyleBackColor = true;
+            // 
+            // btnEventRead
+            // 
+            this.btnEventRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEventRead.Location = new System.Drawing.Point(222, 58);
+            this.btnEventRead.Name = "btnEventRead";
+            this.btnEventRead.Size = new System.Drawing.Size(75, 23);
+            this.btnEventRead.TabIndex = 4;
+            this.btnEventRead.Text = "Read";
+            this.btnEventRead.UseVisualStyleBackColor = true;
+            this.btnEventRead.Click += new System.EventHandler(this.btnEventRead_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2446,6 +2533,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudBrightnessR)).EndInit();
             this.tpgHotkeys.ResumeLayout(false);
             this.tpgHotkeys.PerformLayout();
+            this.tpgMisc.ResumeLayout(false);
+            this.tpgMisc.PerformLayout();
+            this.gbxEventFlags.ResumeLayout(false);
+            this.gbxEventFlags.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2615,6 +2706,13 @@
         private System.Windows.Forms.Label lblHotkeyDeadMode;
         private System.Windows.Forms.TextBox txtHotkeyDeadMode;
         private System.Windows.Forms.CheckBox cbxRestoreState;
+        private System.Windows.Forms.TabPage tpgMisc;
+        private System.Windows.Forms.GroupBox gbxEventFlags;
+        private System.Windows.Forms.Button btnEventRead;
+        private System.Windows.Forms.CheckBox cbxEventFlag;
+        private System.Windows.Forms.Button btnEventWrite;
+        private System.Windows.Forms.TextBox txtEventFlag;
+        private System.Windows.Forms.Label lblEventID;
     }
 }
 

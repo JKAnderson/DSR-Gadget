@@ -190,6 +190,10 @@ namespace DSR_Gadget
             Class = 0xCE,
         }
 
+        public static byte?[] EventFlagsAOB = getAOB("48 8B 0D ? ? ? ? 99 33 C2 45 33 C0 2B C2 8D 50 F6");
+        public IntPtr EventFlagPtr;
+        public static int EventFlagsOffset = 0x0;
+
         public static byte?[] ItemGetAOB = getAOB("48 89 5C 24 18 89 54 24 10 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 F9");
         public IntPtr ItemGetAddr;
 
