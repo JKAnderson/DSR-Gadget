@@ -312,8 +312,16 @@ namespace DSR_Gadget
                         }
 
                         if (found)
+                        {
+                            // Originally I was scanning everything every time to make sure there weren't multiple results,
+                            // but it was slow enough to be obnoxious, so just break out once you find one.
                             results.Add(baseAddress + i);
+                            break;
+                        }
                     }
+
+                    if (results.Count == 1)
+                        break;
                 }
 
                 if (results.Count == 0)

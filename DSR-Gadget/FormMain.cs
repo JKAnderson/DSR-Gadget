@@ -80,18 +80,20 @@ namespace DSR_Gadget
 
         private void tmrUpdate_Tick(object sender, EventArgs e)
         {
-            if (dsrProcess == null)
+            if (dsrProcess == null || !dsrProcess.Valid)
             {
                 DSRProcess result = DSRProcess.GetProcess();
                 if (result != null)
                 {
                     lblVersionValue.Text = result.Version;
                     if (result.Valid)
+                    {
                         lblVersionValue.ForeColor = result.Version == "Unknown" ? Color.DarkOrange : Color.DarkGreen;
+                        tmrUpdate.Interval = 16;
+                    }
                     else
                         lblVersionValue.ForeColor = Color.DarkRed;
                     dsrProcess = result;
-                    tmrUpdate.Interval = 16;
                 }
             }
             else
