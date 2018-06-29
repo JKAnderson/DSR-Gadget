@@ -172,10 +172,10 @@ namespace DSR_Gadget
 
         public void GetStablePosition(out float x, out float y, out float z, out float angle)
         {
-            x = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableX);
-            y = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableY);
-            z = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableZ);
-            angle = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableAngle);
+            x = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableX + offsets.ChrClassWarpBoost);
+            y = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableY + offsets.ChrClassWarpBoost);
+            z = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableZ + offsets.ChrClassWarpBoost);
+            angle = dsrInterface.ReadFloat(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.StableAngle + offsets.ChrClassWarpBoost);
         }
 
         public void PosWarp(float x, float y, float z, float angle)
@@ -211,12 +211,12 @@ namespace DSR_Gadget
 
         public int GetLastBonfire()
         {
-            return dsrInterface.ReadInt32(pointers.ChrClassWarp + offsets.ChrClassWarpLastBonfire);
+            return dsrInterface.ReadInt32(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.LastBonfire + offsets.ChrClassWarpBoost);
         }
 
         public void SetLastBonfire(int value)
         {
-            dsrInterface.WriteInt32(pointers.ChrClassWarp + offsets.ChrClassWarpLastBonfire, value);
+            dsrInterface.WriteInt32(pointers.ChrClassWarp + (int)DSROffsets.ChrClassWarp.LastBonfire + offsets.ChrClassWarpBoost, value);
         }
 
         public void BonfireWarp()

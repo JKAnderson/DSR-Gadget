@@ -44,13 +44,14 @@ namespace DSR_Gadget
 
         public static byte?[] ChrClassWarpAOB = getAOB("48 8B 05 ? ? ? ? 66 0F 7F 80 ? ? ? ? 0F 28 02 66 0F 7F 80 ? ? ? ? C6 80");
         public IntPtr ChrClassWarpPtr;
-        public int ChrClassWarpLastBonfire = 0xB24;
+        public int ChrClassWarpBoost = 0x0;
         public enum ChrClassWarp
         {
+            LastBonfire = 0xB24,
             StableX = 0xB90,
             StableY = 0xB94,
             StableZ = 0xB98,
-            StableAngle = 0xB9C,
+            StableAngle = 0xBA4,
         }
 
         public static byte?[] WorldChrBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 8B 48 68 48 85 C9 0F 84 ? ? ? ? 48 39 5E 10 0F 84 ? ? ? ? 48");
@@ -220,7 +221,7 @@ namespace DSR_Gadget
             DSROffsets result = new DSROffsets();
             if (!oldVersions.Contains(moduleSize))
             {
-                result.ChrClassWarpLastBonfire = 0xB34;
+                result.ChrClassWarpBoost = 0x10;
             }
             return result;
         }
