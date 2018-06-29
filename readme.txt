@@ -1,5 +1,5 @@
 
---| DSR Gadget 1.3
+--| DSR Gadget 1.4
 --| By Pav & TKGP
 --| https://github.com/JKAnderson/DSR-Gadget
 
@@ -10,6 +10,9 @@ Windows 10 users should already have this.
 
 
 --| Credits
+
+Costura.Fody by Simon Cropp, Cameron MacFarland
+https://github.com/Fody/Costura
 
 LowLevelHooking by Joseph N. Musser II
 https://github.com/jnm2/LowLevelHooking
@@ -22,6 +25,14 @@ https://github.com/maxhauser/semver
 
 
 --| Changelog
+
+1.4
+	Add basic event flag support (Misc tab)
+	Fix stable position not working on 1.01.2
+	Fix stable angle never working in the first place
+	Fix no gravity and no collision not reapplying after load screens
+	Fix camera storing/restoring not working sometimes
+	Hooking the game is much faster now
 
 1.3
 	Supports 1.01.2

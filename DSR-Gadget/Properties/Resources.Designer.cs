@@ -110,13 +110,13 @@ namespace DSR_Gadget.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0:  48 b9 b0 1b cf 41 01    movabs rcx,0x141cf1bb0
-        ///7:  00 00 00
+        ///   Looks up a localized string similar to 0:  48 b9 fe fe fe fe fe    movabs rcx,0xfefefefefefefefe
+        ///7:  fe fe fe
         ///a:  48 8b 09                mov    rcx,QWORD PTR [rcx]
         ///d:  ba 01 00 00 00          mov    edx,0x1
         ///12: 48 83 ec 38             sub    rsp,0x38
-        ///16: 49 be 60 bd 47 40 01    movabs r14,0x14047bd60
-        ///1d: 00 00 00
+        ///16: 49 be fe fe fe fe fe    movabs r14,0xfefefefefefefefe
+        ///1d: fe fe fe
         ///20: 41 ff d6                call   r14
         ///23: 48 83 c4 38             add    rsp,0x38
         ///27: c3                      ret .
@@ -171,16 +171,16 @@ namespace DSR_Gadget.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0:  ba ff ff ff ff          mov    edx,0xffffffff
-        ///5:  41 b9 ff ff ff ff       mov    r9d,0xffffffff
-        ///b:  41 b8 ff ff ff ff       mov    r8d,0xffffffff
-        ///11: 41 bc ff ff ff ff       mov    r12d,0xffffffff
-        ///17: 48 a1 50 0f d0 41 01    movabs rax,ds:0x141d00f50
-        ///1e: 00 00 00
+        ///   Looks up a localized string similar to 0:  ba fe fe fe fe          mov    edx,0xfefefefe
+        ///5:  41 b9 fe fe fe fe       mov    r9d,0xfefefefe
+        ///b:  41 b8 fe fe fe fe       mov    r8d,0xfefefefe
+        ///11: 41 bc fe fe fe fe       mov    r12d,0xfefefefe
+        ///17: 48 a1 fe fe fe fe fe    movabs rax,ds:0xfefefefefefefefe
+        ///1e: fe fe fe
         ///21: c6 44 24 38 01          mov    BYTE PTR [rsp+0x38],0x1
         ///26: 40 88 7c 24 30          mov    BYTE PTR [rsp+0x30],dil
         ///2b: c6 44 24 28 01          mov    BYTE PTR [rsp+0x28],0x1
-        ///30: 4c 8b 78 10             mov    r15,QWORD PTR [rax+0x10 [rest of string was truncated]&quot;;.
+        ///30: 4c 8b 78 10             mov    r15,QWORD PTR [r [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GetItem {
             get {
@@ -287,21 +287,19 @@ namespace DSR_Gadget.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to     116   1 0 Black Eye Orb (Shiva)
-        ///    200   1 0 Estus Flask (Empty)
-        ///    201  20 0 Estus Flask
-        ///    202   1 0 Estus Flask+1 (Empty)
-        ///    203  20 0 Estus Flask+1
-        ///    204   1 0 Estus Flask+2 (Empty)
-        ///    205  20 0 Estus Flask+2
-        ///    206   1 0 Estus Flask+3 (Empty)
-        ///    207  20 0 Estus Flask+3
-        ///    208   1 0 Estus Flask+4 (Empty)
-        ///    209  20 0 Estus Flask+4
-        ///    210   1 0 Estus Flask+5 (Empty)
-        ///    211  20 0 Estus Flask+5
-        ///    212   1 0 Estus Flask+6 (Empty)
-        ///    213  20 0 Estus Flask+6
-        ///    214   1 0 Est [rest of string was truncated]&quot;;.
+        ///    130   1 0 Covenant: None
+        ///    131   1 0 Covenant: Way of White
+        ///    132   1 0 Covenant: Princess&apos;s Guard
+        ///    133   1 0 Covenant: Warrior of Sunlight
+        ///    134   1 0 Covenant: Darkwraith
+        ///    135   1 0 Covenant: Path of the Dragon
+        ///    136   1 0 Covenant: Gravelord Servant
+        ///    137   1 0 Covenant: Forest Hunter
+        ///    138   1 0 Covenant: Darkmoon Blade
+        ///    139   1 0 Covenant: Chaos Servant
+        ///    140   1 0 Covenant: None
+        ///    141   1 0 Covenant: Way of White+1
+        ///    142   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MysteryGoods {
             get {
@@ -383,7 +381,8 @@ namespace DSR_Gadget.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1400000   1 4 East-West Shield
+        ///   Looks up a localized string similar to 1396000   1 0 Skull Lantern
+        ///1400000   1 4 East-West Shield
         ///1401000   1 4 Wooden Shield
         ///1402000   1 4 Large Leather Shield
         ///1403000   1 4 Small Leather Shield
@@ -398,7 +397,7 @@ namespace DSR_Gadget.Properties {
         ///1451000   1 4 Knight Shield
         ///1452000   1 4 Tower Kite Shield
         ///1453000   1 4 Grass Crest Shield
-        ///1454000   1 4 Hollow Soldier Shield        /// [rest of string was truncated]&quot;;.
+        ///1454000 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Shields {
             get {
