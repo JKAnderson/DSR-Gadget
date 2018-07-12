@@ -14,10 +14,12 @@ namespace DSR_Gadget
 
         public VirtualKey Key;
 
-        public GadgetHotkey(string setSettingsName, TextBox setTextBox, TabPage setTabPage, Action setAction)
+        public GadgetHotkey(string setSettingsName, string labelText, FlowLayoutPanel flowLayoutPanel, TabPage setTabPage, Action setAction)
         {
             settingsName = setSettingsName;
-            hotkeyTextBox = setTextBox;
+			FlowLayoutPanel container = new FlowLayoutPanel() { AutoSize = true};
+			hotkeyTextBox = new TextBox() {Width = 80, Margin = new Padding(0,0,20,5)};
+			Label hotkeyLabel = new Label() { Text = labelText };
             hotkeyTabPage = setTabPage;
             hotkeyAction = setAction;
 
@@ -29,6 +31,9 @@ namespace DSR_Gadget
             hotkeyTextBox.Enter += new EventHandler(enter);
             hotkeyTextBox.Leave += new EventHandler(leave);
             hotkeyTextBox.KeyUp += new KeyEventHandler(keyUp);
+			container.Controls.Add(hotkeyTextBox);
+			container.Controls.Add(hotkeyLabel);
+			flowLayoutPanel.Controls.Add(container);
         }
 
         private void enter(object sender, EventArgs e)
@@ -43,13 +48,14 @@ namespace DSR_Gadget
 
         private void keyUp(object sender, KeyEventArgs e)
         {
+			var selectedTextBox = sender as TextBox;
             Key = (VirtualKey)e.KeyValue;
             if (Key == VirtualKey.Escape)
                 hotkeyTextBox.Text = "Unbound";
             else
                 hotkeyTextBox.Text = Key.ToString();
             e.Handled = true;
-            hotkeyTabPage.Focus();
+            selectedTextBox.Parent.Focus();
         }
 
         public bool Trigger(VirtualKey pressed)

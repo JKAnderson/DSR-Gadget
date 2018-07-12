@@ -382,5 +382,17 @@ namespace DSR_Gadget.Properties {
                 this["Warned"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("27")]
+        public int HotkeyCreateItem {
+            get {
+                return ((int)(this["HotkeyCreateItem"]));
+            }
+            set {
+                this["HotkeyCreateItem"] = value;
+            }
+        }
     }
 }
