@@ -61,7 +61,7 @@ namespace DSR_Gadget
                 cbxFilter.Checked = !cbxFilter.Checked;
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyDeadMode", "Toggle No Death", flpHotkeyControls, tpgHotkeys, () =>
+			hotkeys.Add(new GadgetHotkey("HotkeyDeadMode", "Toggle No Death", flpHotkeyControls, tpgHotkeys, () =>
             {
                 cbxPlayerDeadMode.Checked = !cbxPlayerDeadMode.Checked;
             }));

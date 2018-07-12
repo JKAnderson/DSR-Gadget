@@ -48,13 +48,14 @@ namespace DSR_Gadget
 
         private void keyUp(object sender, KeyEventArgs e)
         {
+			var selectedTextBox = sender as TextBox;
             Key = (VirtualKey)e.KeyValue;
             if (Key == VirtualKey.Escape)
                 hotkeyTextBox.Text = "Unbound";
             else
                 hotkeyTextBox.Text = Key.ToString();
             e.Handled = true;
-            hotkeyTabPage.Focus();
+            selectedTextBox.Parent.Focus();
         }
 
         public bool Trigger(VirtualKey pressed)

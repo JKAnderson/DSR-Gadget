@@ -60,17 +60,32 @@ namespace DSR_Gadget
             nudStamina.Value = dsrProcess.GetStamina();
             nudStaminaMax.Value = dsrProcess.GetStaminaMax();
 
-            dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
-            nudPosX.Value = (decimal)x;
-            nudPosY.Value = (decimal)y;
-            nudPosZ.Value = (decimal)z;
-            nudPosAngle.Value = angleToDegree(angle);
+			try
+			{
+				dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
+				nudPosX.Value = (decimal)x;
+				nudPosY.Value = (decimal)y;
+				nudPosZ.Value = (decimal)z;
+				nudPosAngle.Value = angleToDegree(angle);
 
-            dsrProcess.GetStablePosition(out x, out y, out z, out angle);
-            nudStableX.Value = (decimal)x;
-            nudStableY.Value = (decimal)y;
-            nudStableZ.Value = (decimal)z;
-            nudStableAngle.Value = angleToDegree(angle);
+				dsrProcess.GetStablePosition(out x, out y, out z, out angle);
+				nudStableX.Value = (decimal)x;
+				nudStableY.Value = (decimal)y;
+				nudStableZ.Value = (decimal)z;
+				nudStableAngle.Value = angleToDegree(angle);
+			}
+			catch(OverflowException)
+			{
+				nudPosX.Value = 0;
+				nudPosY.Value = 0;
+				nudPosZ.Value = 0;
+				nudPosAngle.Value = 0;
+
+				nudStableX.Value = 0;
+				nudStableY.Value = 0;
+				nudStableZ.Value = 0;
+				nudStableAngle.Value = 0;
+			}
 
             cbxDeathCam.Checked = dsrProcess.GetDeathCam();
             if (cbxSpeed.Checked)
@@ -200,12 +215,26 @@ namespace DSR_Gadget
 
         private decimal angleToDegree(float angle)
         {
-            return (decimal)((angle + Math.PI) / (Math.PI * 2) * 360);
-        }
+			try
+			{
+				return (decimal)((angle + Math.PI) / (Math.PI * 2) * 360);
+			}
+			catch
+			{
+				return 0;
+			}
+		}
 
-        private float degreeToAngle(decimal degree)
-        {
-            return (float)((double)degree / 360 * (Math.PI * 2) - Math.PI);
-        }
+		private float degreeToAngle(decimal degree)
+		{
+			try
+			{
+				return (float)((double)degree / 360 * (Math.PI * 2) - Math.PI);
+			}
+			catch
+			{
+				return 0;
+			}
+		}
     }
 }
