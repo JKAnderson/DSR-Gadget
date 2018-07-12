@@ -60,32 +60,32 @@ namespace DSR_Gadget
             nudStamina.Value = dsrProcess.GetStamina();
             nudStaminaMax.Value = dsrProcess.GetStaminaMax();
 
-			try
-			{
-				dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
-				nudPosX.Value = (decimal)x;
-				nudPosY.Value = (decimal)y;
-				nudPosZ.Value = (decimal)z;
-				nudPosAngle.Value = angleToDegree(angle);
+            try
+            {
+                dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
+                nudPosX.Value = (decimal)x;
+                nudPosY.Value = (decimal)y;
+                nudPosZ.Value = (decimal)z;
+                nudPosAngle.Value = angleToDegree(angle);
 
-				dsrProcess.GetStablePosition(out x, out y, out z, out angle);
-				nudStableX.Value = (decimal)x;
-				nudStableY.Value = (decimal)y;
-				nudStableZ.Value = (decimal)z;
-				nudStableAngle.Value = angleToDegree(angle);
-			}
-			catch(OverflowException)
-			{
-				nudPosX.Value = 0;
-				nudPosY.Value = 0;
-				nudPosZ.Value = 0;
-				nudPosAngle.Value = 0;
+                dsrProcess.GetStablePosition(out x, out y, out z, out angle);
+                nudStableX.Value = (decimal)x;
+                nudStableY.Value = (decimal)y;
+                nudStableZ.Value = (decimal)z;
+                nudStableAngle.Value = angleToDegree(angle);
+            }
+            catch (OverflowException)
+            {
+                nudPosX.Value = 0;
+                nudPosY.Value = 0;
+                nudPosZ.Value = 0;
+                nudPosAngle.Value = 0;
 
-				nudStableX.Value = 0;
-				nudStableY.Value = 0;
-				nudStableZ.Value = 0;
-				nudStableAngle.Value = 0;
-			}
+                nudStableX.Value = 0;
+                nudStableY.Value = 0;
+                nudStableZ.Value = 0;
+                nudStableAngle.Value = 0;
+            }
 
             cbxDeathCam.Checked = dsrProcess.GetDeathCam();
             if (cbxSpeed.Checked)
@@ -118,19 +118,20 @@ namespace DSR_Gadget
 
         private void nudHealth_ValueChanged(object sender, EventArgs e)
         {
-            if (!reading)
+            if (loaded && !reading)
                 dsrProcess.SetHealth((int)nudHealth.Value);
         }
 
         private void nudStamina_ValueChanged(object sender, EventArgs e)
         {
-            if (!reading)
+            if (loaded && !reading)
                 dsrProcess.SetStamina((int)nudStamina.Value);
         }
 
         private void btnPosStore_Click(object sender, EventArgs e)
         {
-            storePosition();
+            if (loaded)
+                storePosition();
         }
 
         private void storePosition()
@@ -149,7 +150,8 @@ namespace DSR_Gadget
 
         private void btnPosRestore_Click(object sender, EventArgs e)
         {
-            restorePosition();
+            if (loaded)
+                restorePosition();
         }
 
         private void restorePosition()
@@ -195,7 +197,7 @@ namespace DSR_Gadget
 
         private void cmbBonfire_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!reading)
+            if (loaded && !reading)
             {
                 DSRBonfire bonfire = cmbBonfire.SelectedItem as DSRBonfire;
                 dsrProcess.SetLastBonfire(bonfire.ID);
@@ -204,37 +206,24 @@ namespace DSR_Gadget
 
         private void btnWarp_Click(object sender, EventArgs e)
         {
-            dsrProcess.BonfireWarp();
+            if (loaded)
+                dsrProcess.BonfireWarp();
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
         {
-            if (!cbxSpeed.Checked)
+            if (loaded && !cbxSpeed.Checked)
                 dsrProcess.SetAnimSpeed(1);
         }
 
         private decimal angleToDegree(float angle)
         {
-			try
-			{
-				return (decimal)((angle + Math.PI) / (Math.PI * 2) * 360);
-			}
-			catch
-			{
-				return 0;
-			}
-		}
+            return (decimal)((angle + Math.PI) / (Math.PI * 2) * 360);
+        }
 
-		private float degreeToAngle(decimal degree)
-		{
-			try
-			{
-				return (float)((double)degree / 360 * (Math.PI * 2) - Math.PI);
-			}
-			catch
-			{
-				return 0;
-			}
-		}
+        private float degreeToAngle(decimal degree)
+        {
+            return (float)((double)degree / 360 * (Math.PI * 2) - Math.PI);
+        }
     }
 }

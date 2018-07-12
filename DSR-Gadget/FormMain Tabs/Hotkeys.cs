@@ -14,76 +14,77 @@ namespace DSR_Gadget
             cbxHotkeysEnable.Checked = settings.HotkeysEnable;
             cbxHotkeysHandle.Checked = settings.HotkeysHandle;
 
-            hotkeys.Add(new GadgetHotkey("HotkeyGravity", "Toggle Gravity", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyGravity", "Toggle Gravity", flpHotkeyControls, () =>
             {
                 cbxGravity.Checked = !cbxGravity.Checked;
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyCollision", "Toggle Collision", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyCollision", "Toggle Collision", flpHotkeyControls, () =>
             {
                 cbxCollision.Checked = !cbxCollision.Checked;
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeySpeed", "Toggle Speed", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeySpeed", "Toggle Speed", flpHotkeyControls, () =>
             {
                 cbxSpeed.Checked = !cbxSpeed.Checked;
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyStore", "Store Position", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyStore", "Store Position", flpHotkeyControls, () =>
             {
                 storePosition();
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyRestore", "Restore Position", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyRestore", "Restore Position", flpHotkeyControls, () =>
             {
                 restorePosition();
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyUp", "Move Up", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyUp", "Move Up", flpHotkeyControls, () =>
             {
                 dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
                 dsrProcess.PosWarp(x, y + 10, z, angle);
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyDown", "Move Down", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyDown", "Move Down", flpHotkeyControls, () =>
             {
                 dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
                 dsrProcess.PosWarp(x, y - 10, z, angle);
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyMenu", "Quit to Menu", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyMenu", "Quit to Menu", flpHotkeyControls, () =>
             {
                 dsrProcess.MenuKick();
             }));
 
-            hotkeys.Add(new GadgetHotkey("HotkeyFilter", "Toggle Filter", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyFilter", "Toggle Filter", flpHotkeyControls, () =>
             {
                 cbxFilter.Checked = !cbxFilter.Checked;
             }));
 
-			hotkeys.Add(new GadgetHotkey("HotkeyDeadMode", "Toggle No Death", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyDeadMode", "Toggle No Death", flpHotkeyControls, () =>
             {
                 cbxPlayerDeadMode.Checked = !cbxPlayerDeadMode.Checked;
             }));
 
-			hotkeys.Add(new GadgetHotkey("HotkeyCreateItem", "Create Item", flpHotkeyControls, tpgItems, () =>
-			{
-				createItem();
-			}));
+            hotkeys.Add(new GadgetHotkey("HotkeyCreateItem", "Create Selected Item", flpHotkeyControls, () =>
+            {
+                createItem();
+            }));
 
-			/*
-            hotkeys.Add(new GadgetHotkey("Hotkey", txtHotkey, tpgHotkeys, () =>
+            /*
+            hotkeys.Add(new GadgetHotkey("Hotkey", "", flpHotkeyControls, () =>
             {
                 
             }));
             */
 
 #if DEBUG
-			hotkeys.Add(new GadgetHotkey("HotkeyTest1", "Test 1", flpHotkeyControls, tpgHotkeys, () =>
+            hotkeys.Add(new GadgetHotkey("HotkeyTest1", "Test 1", flpHotkeyControls, () =>
             {
                 dsrProcess.HotkeyTest1();
             }));
-            hotkeys.Add(new GadgetHotkey("HotkeyTest2", "Test 2", flpHotkeyControls, tpgHotkeys, () =>
+
+            hotkeys.Add(new GadgetHotkey("HotkeyTest2", "Test 2", flpHotkeyControls, () =>
             {
                 dsrProcess.HotkeyTest2();
             }));

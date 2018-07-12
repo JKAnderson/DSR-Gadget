@@ -100,12 +100,14 @@ namespace DSR_Gadget
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            createItem();
+            if (loaded)
+                createItem();
         }
 
         private void lbxItems_DoubleClick(object sender, EventArgs e)
         {
-            createItem();
+            if (loaded)
+                createItem();
         }
 
         private void createItem()

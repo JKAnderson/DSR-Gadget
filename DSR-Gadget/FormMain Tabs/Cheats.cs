@@ -105,97 +105,116 @@ namespace DSR_Gadget
 
         private void cbxPlayerDeadMode_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerDeadMode(cbxPlayerDeadMode.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerDeadMode(cbxPlayerDeadMode.Checked);
         }
 
         private void cbxPlayerNoDead_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerNoDead(cbxPlayerNoDead.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerNoDead(cbxPlayerNoDead.Checked);
         }
 
         private void cbxPlayerDisableDamage_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerDisableDamage(cbxPlayerDisableDamage.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerDisableDamage(cbxPlayerDisableDamage.Checked);
         }
 
         private void cbxPlayerNoHit_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerNoHit(cbxPlayerNoHit.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerNoHit(cbxPlayerNoHit.Checked);
         }
 
         private void cbxPlayerNoStamina_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerNoStamina(cbxPlayerNoStamina.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerNoStamina(cbxPlayerNoStamina.Checked);
         }
 
         private void cbxPlayerSuperArmor_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerSuperArmor(cbxPlayerSuperArmor.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerSuperArmor(cbxPlayerSuperArmor.Checked);
         }
 
         private void cbxPlayerHide_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerHide(cbxPlayerHide.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerHide(cbxPlayerHide.Checked);
         }
 
         private void cbxPlayerSilence_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerSilence(cbxPlayerSilence.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerSilence(cbxPlayerSilence.Checked);
         }
 
         private void cbxPlayerExterminate_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerExterminate(cbxPlayerExterminate.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerExterminate(cbxPlayerExterminate.Checked);
         }
 
         private void cbxPlayerNoGoods_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerNoGoods(cbxPlayerNoGoods.Checked);
+            if (loaded)
+                dsrProcess.SetPlayerNoGoods(cbxPlayerNoGoods.Checked);
         }
 
         private void cbxAllNoArrow_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoArrow(cbxAllNoArrow.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoArrow(cbxAllNoArrow.Checked);
         }
 
         private void cbxAllNoMagicQty_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoMagicQty(cbxAllNoMagicQty.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoMagicQty(cbxAllNoMagicQty.Checked);
         }
 
         private void cbxAllNoDead_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoDead(cbxAllNoDead.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoDead(cbxAllNoDead.Checked);
         }
 
         private void cbxAllNoDamage_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoDamage(cbxAllNoDamage.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoDamage(cbxAllNoDamage.Checked);
         }
 
         private void cbxAllNoHit_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoHit(cbxAllNoHit.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoHit(cbxAllNoHit.Checked);
         }
 
         private void cbxAllNoStamina_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoStamina(cbxAllNoStamina.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoStamina(cbxAllNoStamina.Checked);
         }
 
         private void cbxAllNoAttack_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoAttack(cbxAllNoAttack.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoAttack(cbxAllNoAttack.Checked);
         }
 
         private void cbxAllNoMove_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoMove(cbxAllNoMove.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoMove(cbxAllNoMove.Checked);
         }
 
         private void cbxAllNoUpdateAI_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoUpdateAI(cbxAllNoUpdateAI.Checked);
+            if (loaded)
+                dsrProcess.SetAllNoUpdateAI(cbxAllNoUpdateAI.Checked);
         }
     }
 }

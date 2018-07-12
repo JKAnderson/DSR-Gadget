@@ -78,27 +78,32 @@ namespace DSR_Gadget
 
         private void cbxDrawMap_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess?.SetDrawMap(cbxDrawMap.Checked);
+            if (loaded)
+                dsrProcess.SetDrawMap(cbxDrawMap.Checked);
         }
 
         private void cbxDrawObjects_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess?.SetDrawObjects(cbxDrawObjects.Checked);
+            if (loaded)
+                dsrProcess.SetDrawObjects(cbxDrawObjects.Checked);
         }
 
         private void cbxDrawCharacters_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess?.SetDrawCharacters(cbxDrawCharacters.Checked);
+            if (loaded)
+                dsrProcess.SetDrawCharacters(cbxDrawCharacters.Checked);
         }
 
         private void cbxDrawSFX_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess?.SetDrawSFX(cbxDrawSFX.Checked);
+            if (loaded)
+                dsrProcess.SetDrawSFX(cbxDrawSFX.Checked);
         }
 
         private void cbxDrawCutscenes_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess?.SetDrawCutscenes(cbxDrawCutscenes.Checked);
+            if (loaded)
+                dsrProcess.SetDrawCutscenes(cbxDrawCutscenes.Checked);
         }
 
         private void cbxFilter_CheckedChanged(object sender, EventArgs e)

@@ -63,7 +63,7 @@ namespace DSR_Gadget
 
         private void nudHumanity_ValueChanged(object sender, EventArgs e)
         {
-            //if (!reading) ;
+            //if (!reading)
             //dsrProcess?.SetHumanity((int)nudHumanity.Value);
         }
 
