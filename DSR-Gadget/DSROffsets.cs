@@ -60,14 +60,14 @@ namespace DSR_Gadget
         {
             ChrData1 = 0x68,
             DeathCam = 0x70,
-		}
+        }
 
-		public int ChrData1Boost1 = 0x0;
-		public int ChrData1Boost2 = 0x0;
-		public enum ChrData1
-		{
-			ChrMapData = 0x48,
-			ChrFlags1 = 0x284,
+        public int ChrData1Boost1 = 0x0;
+        public int ChrData1Boost2 = 0x0;
+        public enum ChrData1
+        {
+            ChrMapData = 0x48,
+            ChrFlags1 = 0x284,
             Health = 0x3D8,
             MaxHealth = 0x3DC,
             Stamina = 0x3E8,
@@ -145,8 +145,8 @@ namespace DSR_Gadget
             PosZ = 0x18,
         }
 
-		public static byte?[] ChrDbgAOB = getAOB("80 3D ? ? ? ? 00 48 8B 8F ? ? ? ? 0F B6 DB");
-		public IntPtr ChrDbgAddr;
+        public static byte?[] ChrDbgAOB = getAOB("80 3D ? ? ? ? 00 48 8B 8F ? ? ? ? 0F B6 DB");
+        public IntPtr ChrDbgAddr;
         public enum ChrDbg
         {
             PlayerNoDead = 0x0,
@@ -221,28 +221,28 @@ namespace DSR_Gadget
         public static DSROffsets GetOffsets(int moduleSize)
         {
             DSROffsets result = new DSROffsets();
-			int version = versions.ContainsKey(moduleSize) ? versions[moduleSize] : 100;
+            int version = versions.ContainsKey(moduleSize) ? versions[moduleSize] : 100;
 
-			if (version > 1)
-			{
-				result.ChrClassWarpBoost = 0x10;
-			}
+            if (version > 1)
+            {
+                result.ChrClassWarpBoost = 0x10;
+            }
 
-			if (version > 2)
-			{
-				result.ChrData1Boost1 = 0x20;
-				result.ChrData1Boost2 = 0x10;
-			}
+            if (version > 2)
+            {
+                result.ChrData1Boost1 = 0x20;
+                result.ChrData1Boost2 = 0x10;
+            }
 
-			return result;
+            return result;
         }
 
-		private static readonly Dictionary<int, int> versions = new Dictionary<int, int>()
-		{
-			[0x4869400] = 0, // 1.01
-			[0x496BE00] = 1, // 1.01.1
-			[0x37CB400] = 2, // 1.01.2
-			[0x3817800] = 3, // 1.03
-		};
-	}
+        private static readonly Dictionary<int, int> versions = new Dictionary<int, int>()
+        {
+            [0x4869400] = 0, // 1.01
+            [0x496BE00] = 1, // 1.01.1
+            [0x37CB400] = 2, // 1.01.2
+            [0x3817800] = 3, // 1.03
+        };
+    }
 }

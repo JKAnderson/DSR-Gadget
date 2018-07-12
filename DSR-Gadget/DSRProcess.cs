@@ -36,8 +36,8 @@ namespace DSR_Gadget
             [0x4869400] = "1.01",
             [0x496BE00] = "1.01.1",
             [0x37CB400] = "1.01.2",
-			[0x3817800] = "1.03",
-		};
+            [0x3817800] = "1.03",
+        };
 
         public DSRProcess(Process candidate)
         {
