@@ -123,7 +123,7 @@ namespace DSR_Gadget
             pointers.ChrFollowCam = dsrInterface.ResolveAddress(offsets.ChrFollowCamPtr, DSROffsets.ChrFollowCamOffset1, DSROffsets.ChrFollowCamOffset1);
             pointers.WorldChrBase = dsrInterface.ReadIntPtr(offsets.WorldChrBasePtr);
             pointers.ChrData1 = dsrInterface.ReadIntPtr(pointers.WorldChrBase + (int)DSROffsets.WorldChrBase.ChrData1);
-            pointers.ChrMapData = dsrInterface.ReadIntPtr(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrMapData);
+            pointers.ChrMapData = dsrInterface.ReadIntPtr(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrMapData + offsets.ChrData1Boost1);
             pointers.ChrAnimData = dsrInterface.ReadIntPtr(pointers.ChrMapData + (int)DSROffsets.ChrMapData.ChrAnimData);
             pointers.ChrPosData = dsrInterface.ReadIntPtr(pointers.ChrMapData + (int)DSROffsets.ChrMapData.ChrPosData);
             pointers.ChrData2 = dsrInterface.ResolveAddress(offsets.ChrClassBasePtr, DSROffsets.ChrData2Offset);
@@ -135,32 +135,32 @@ namespace DSR_Gadget
         #region Player
         public int GetHealth()
         {
-            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Health);
+            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Health + offsets.ChrData1Boost2);
         }
 
         public void SetHealth(int value)
         {
-            dsrInterface.WriteInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Health, value);
+            dsrInterface.WriteInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Health + offsets.ChrData1Boost2, value);
         }
 
         public int GetHealthMax()
         {
-            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.MaxHealth);
+            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.MaxHealth + offsets.ChrData1Boost2);
         }
 
         public int GetStamina()
         {
-            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Stamina);
+            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Stamina + offsets.ChrData1Boost2);
         }
 
         public void SetStamina(int value)
         {
-            dsrInterface.WriteInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Stamina, value);
+            dsrInterface.WriteInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.Stamina + offsets.ChrData1Boost2, value);
         }
 
         public int GetStaminaMax()
         {
-            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.MaxStamina);
+            return dsrInterface.ReadInt32(pointers.ChrData1 + (int)DSROffsets.ChrData1.MaxStamina + offsets.ChrData1Boost2);
         }
 
         public void GetPosition(out float x, out float y, out float z, out float angle)
@@ -190,7 +190,7 @@ namespace DSR_Gadget
 
         public void SetNoGravity(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1,
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1 + offsets.ChrData1Boost1,
                 (uint)DSROffsets.ChrFlags1.NoGravity, value);
         }
 
@@ -375,12 +375,12 @@ namespace DSR_Gadget
         #region Cheats
         public bool GetPlayerDeadMode()
         {
-            return dsrInterface.ReadFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1, (uint)DSROffsets.ChrFlags1.SetDeadMode);
+            return dsrInterface.ReadFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1 + offsets.ChrData1Boost1, (uint)DSROffsets.ChrFlags1.SetDeadMode);
         }
 
         public void SetPlayerDeadMode(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1, (uint)DSROffsets.ChrFlags1.SetDeadMode, value);
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1 + offsets.ChrData1Boost1, (uint)DSROffsets.ChrFlags1.SetDeadMode, value);
         }
 
         public void SetPlayerNoDead(bool value)
@@ -390,22 +390,22 @@ namespace DSR_Gadget
 
         public void SetPlayerDisableDamage(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1, (uint)DSROffsets.ChrFlags1.DisableDamage, value);
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1 + offsets.ChrData1Boost1, (uint)DSROffsets.ChrFlags1.DisableDamage, value);
         }
 
         public void SetPlayerNoHit(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags2, (uint)DSROffsets.ChrFlags2.NoHit, value);
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags2 + offsets.ChrData1Boost2, (uint)DSROffsets.ChrFlags2.NoHit, value);
         }
 
         public void SetPlayerNoStamina(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags2, (uint)DSROffsets.ChrFlags2.NoStaminaConsumption, value);
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags2 + offsets.ChrData1Boost2, (uint)DSROffsets.ChrFlags2.NoStaminaConsumption, value);
         }
 
         public void SetPlayerSuperArmor(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1, (uint)DSROffsets.ChrFlags1.SetSuperArmor, value);
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags1 + offsets.ChrData1Boost1, (uint)DSROffsets.ChrFlags1.SetSuperArmor, value);
         }
 
         public void SetPlayerHide(bool value)
@@ -425,7 +425,7 @@ namespace DSR_Gadget
 
         public void SetPlayerNoGoods(bool value)
         {
-            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags2, (uint)DSROffsets.ChrFlags2.NoGoodsConsume, value);
+            dsrInterface.WriteFlag32(pointers.ChrData1 + (int)DSROffsets.ChrData1.ChrFlags2 + offsets.ChrData1Boost2, (uint)DSROffsets.ChrFlags2.NoGoodsConsume, value);
         }
 
         public void SetAllNoArrow(bool value)
