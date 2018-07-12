@@ -1,6 +1,7 @@
 ﻿using Octokit;
 using Semver;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Net.Http;
@@ -15,23 +16,26 @@ namespace DSR_Gadget
         private DSRProcess dsrProcess = null;
         private bool loaded = false;
         private bool reading = false;
+		private List<Control> criticalControls;
+
 
         public FormMain()
         {
             InitializeComponent();
+			criticalControls = new List<Control>() { nudHealth, nudStamina, btnPosStore, btnPosRestore, cbxGravity, cbxCollision, cbxDeathCam, btnWarp, cmbBonfire, cbxSpeed, tpgStats, btnCreate, tpgCheats, tpgGraphics,  btnEventRead, btnEventWrite};
         }
 
-        private void enableTabs(bool enable)
+        private void enableCriticalControls(bool enable)
         {
-            foreach (TabPage tab in tclMain.TabPages)
-                tab.Enabled = enable;
+            foreach (Control ctrl in criticalControls)
+				ctrl.Enabled = enable;
         }
 
         private async void FormMain_Load(object sender, EventArgs e)
         {
             Location = settings.WindowLocation;
             Text = "DSR Gadget " + System.Windows.Forms.Application.ProductVersion;
-            enableTabs(false);
+			enableCriticalControls(false);
             initializeAll();
 
             llbUpdate.Visible = false;
@@ -107,7 +111,7 @@ namespace DSR_Gadget
                             lblLoadedValue.Text = "Yes";
                             dsrProcess.LoadPointers();
                             reloadAll();
-                            enableTabs(true);
+							enableCriticalControls(true);
                             loaded = true;
                         }
                         else
@@ -118,7 +122,7 @@ namespace DSR_Gadget
                     else if (loaded)
                     {
                         lblLoadedValue.Text = "No";
-                        enableTabs(false);
+						enableCriticalControls(false);
                         loaded = false;
                     }
                 }
@@ -130,7 +134,7 @@ namespace DSR_Gadget
                     lblVersionValue.Text = "None";
                     lblVersionValue.ForeColor = Color.Black;
                     lblLoadedValue.Text = "No";
-                    enableTabs(false);
+					enableCriticalControls(false);
                     loaded = false;
                 }
             }

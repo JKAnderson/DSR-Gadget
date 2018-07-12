@@ -87,11 +87,6 @@ namespace DSR_Gadget
             {
                 dsrProcess.HotkeyTest2();
             }));
-#else
-            txtHotkeyTest1.Visible = false;
-            lblHotkeyTest1.Visible = false;
-            txtHotkeyTest2.Visible = false;
-            lblHotkeyTest2.Visible = false;
 #endif
 
             keyboardHook.KeyDownOrUp += GlobalKeyboardHook_KeyDownOrUp;
