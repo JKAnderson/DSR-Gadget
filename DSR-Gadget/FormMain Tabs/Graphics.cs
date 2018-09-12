@@ -50,7 +50,7 @@ namespace DSR_Gadget
             if (!cbxDrawCutscenes.Checked)
                 dsrProcess.SetDrawCutscenes(true);
 
-            if (cbxFilter.Checked)
+            if (loaded && cbxFilter.Checked)
                 dsrProcess.SetFilterOverride(false);
         }
 
@@ -78,32 +78,27 @@ namespace DSR_Gadget
 
         private void cbxDrawMap_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetDrawMap(cbxDrawMap.Checked);
+            dsrProcess.SetDrawMap(cbxDrawMap.Checked);
         }
 
         private void cbxDrawObjects_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetDrawObjects(cbxDrawObjects.Checked);
+            dsrProcess.SetDrawObjects(cbxDrawObjects.Checked);
         }
 
         private void cbxDrawCharacters_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetDrawCharacters(cbxDrawCharacters.Checked);
+            dsrProcess.SetDrawCharacters(cbxDrawCharacters.Checked);
         }
 
         private void cbxDrawSFX_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetDrawSFX(cbxDrawSFX.Checked);
+            dsrProcess.SetDrawSFX(cbxDrawSFX.Checked);
         }
 
         private void cbxDrawCutscenes_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetDrawCutscenes(cbxDrawCutscenes.Checked);
+            dsrProcess.SetDrawCutscenes(cbxDrawCutscenes.Checked);
         }
 
         private void cbxFilter_CheckedChanged(object sender, EventArgs e)

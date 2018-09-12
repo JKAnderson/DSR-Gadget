@@ -1,5 +1,5 @@
 
---| DSR Gadget 1.5
+--| DSR Gadget 1.6
 --| By Pav & TKGP
 --| https://github.com/JKAnderson/DSR-Gadget
 
@@ -30,6 +30,10 @@ https://github.com/maxhauser/semver
 
 
 --| Changelog
+
+1.6
+	Fixed cheats and other things staying on if you unchecked them while unloaded
+	Fixed no gravity, no collision, and filters not reapplying properly after reloads
 
 1.5
 	Supports 1.03

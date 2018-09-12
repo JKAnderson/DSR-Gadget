@@ -111,8 +111,7 @@ namespace DSR_Gadget
 
         private void cbxPlayerNoDead_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetPlayerNoDead(cbxPlayerNoDead.Checked);
+            dsrProcess.SetPlayerNoDead(cbxPlayerNoDead.Checked);
         }
 
         private void cbxPlayerDisableDamage_CheckedChanged(object sender, EventArgs e)
@@ -129,8 +128,7 @@ namespace DSR_Gadget
 
         private void cbxPlayerNoStamina_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetPlayerNoStamina(cbxPlayerNoStamina.Checked);
+            dsrProcess.SetPlayerNoStamina(cbxPlayerNoStamina.Checked);
         }
 
         private void cbxPlayerSuperArmor_CheckedChanged(object sender, EventArgs e)
@@ -141,20 +139,17 @@ namespace DSR_Gadget
 
         private void cbxPlayerHide_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetPlayerHide(cbxPlayerHide.Checked);
+            dsrProcess.SetPlayerHide(cbxPlayerHide.Checked);
         }
 
         private void cbxPlayerSilence_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetPlayerSilence(cbxPlayerSilence.Checked);
+            dsrProcess.SetPlayerSilence(cbxPlayerSilence.Checked);
         }
 
         private void cbxPlayerExterminate_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetPlayerExterminate(cbxPlayerExterminate.Checked);
+            dsrProcess.SetPlayerExterminate(cbxPlayerExterminate.Checked);
         }
 
         private void cbxPlayerNoGoods_CheckedChanged(object sender, EventArgs e)
@@ -165,56 +160,47 @@ namespace DSR_Gadget
 
         private void cbxAllNoArrow_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoArrow(cbxAllNoArrow.Checked);
+            dsrProcess.SetAllNoArrow(cbxAllNoArrow.Checked);
         }
 
         private void cbxAllNoMagicQty_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoMagicQty(cbxAllNoMagicQty.Checked);
+            dsrProcess.SetAllNoMagicQty(cbxAllNoMagicQty.Checked);
         }
 
         private void cbxAllNoDead_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoDead(cbxAllNoDead.Checked);
+            dsrProcess.SetAllNoDead(cbxAllNoDead.Checked);
         }
 
         private void cbxAllNoDamage_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoDamage(cbxAllNoDamage.Checked);
+            dsrProcess.SetAllNoDamage(cbxAllNoDamage.Checked);
         }
 
         private void cbxAllNoHit_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoHit(cbxAllNoHit.Checked);
+            dsrProcess.SetAllNoHit(cbxAllNoHit.Checked);
         }
 
         private void cbxAllNoStamina_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoStamina(cbxAllNoStamina.Checked);
+            dsrProcess.SetAllNoStamina(cbxAllNoStamina.Checked);
         }
 
         private void cbxAllNoAttack_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoAttack(cbxAllNoAttack.Checked);
+            dsrProcess.SetAllNoAttack(cbxAllNoAttack.Checked);
         }
 
         private void cbxAllNoMove_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoMove(cbxAllNoMove.Checked);
+            dsrProcess.SetAllNoMove(cbxAllNoMove.Checked);
         }
 
         private void cbxAllNoUpdateAI_CheckedChanged(object sender, EventArgs e)
         {
-            if (loaded)
-                dsrProcess.SetAllNoUpdateAI(cbxAllNoUpdateAI.Checked);
+            dsrProcess.SetAllNoUpdateAI(cbxAllNoUpdateAI.Checked);
         }
     }
 }

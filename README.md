@@ -1,5 +1,5 @@
 
-# DSR Gadget - By Pav & TKGP
+# DSR Gadget 1.6 - By Pav & TKGP
 A multi-purpose testing tool for Dark Souls: Remastered.  
 Compatible with DSR App ver. 1.01, 1.01.1, 1.01.2, 1.03, and possibly future versions.  
 Requires [.NET 4.7.2](https://www.microsoft.com/net/download/thank-you/net472) - Windows 10 users should already have this.
@@ -17,6 +17,10 @@ Requires [.NET 4.7.2](https://www.microsoft.com/net/download/thank-you/net472) -
 [Semver](https://github.com/maxhauser/semver) by Max Hauser
 
 # Changelog
+### 1.6
+* Fixed cheats and other things staying on if you unchecked them while unloaded
+* Fixed no gravity, no collision, and filters not reapplying properly after reloads
+
 ### 1.5
 * Supports 1.03
 * Controls that don't need the game to be loaded can now be used without the game being loaded

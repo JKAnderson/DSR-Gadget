@@ -48,9 +48,9 @@ namespace DSR_Gadget
         private void reloadPlayer()
         {
             if (!cbxGravity.Checked)
-                dsrProcess.SetNoGravity(false);
+                dsrProcess.SetNoGravity(true);
             if (!cbxCollision.Checked)
-                dsrProcess.SetNoCollision(false);
+                dsrProcess.SetNoCollision(true);
         }
 
         private void updatePlayer()

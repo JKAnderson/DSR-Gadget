@@ -113,9 +113,9 @@ namespace DSR_Gadget
                         {
                             lblLoadedValue.Text = "Yes";
                             dsrProcess.LoadPointers();
+                            loaded = true;
                             reloadAll();
                             enableCriticalControls(true);
-                            loaded = true;
                         }
                         else
                         {
