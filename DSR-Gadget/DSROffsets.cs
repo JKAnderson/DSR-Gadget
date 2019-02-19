@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace DSR_Gadget
 {
-    class DSROffsets
+    internal class DSROffsets
     {
-        public static byte?[] CamManBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 63 D1 48 8B 44 D0 08 C3");
-        public IntPtr CamManBasePtr;
+        public static string CamManBaseAOB = "48 8B 05 ? ? ? ? 48 63 D1 48 8B 44 D0 08 C3";
         public static int CamManOffset = 0x10;
 
-        public static byte?[] ChrFollowCamAOB = getAOB("48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B 4E 68 48 8B 05 ? ? ? ? 48 89 48 60");
-        public IntPtr ChrFollowCamPtr;
-        public static int ChrFollowCamOffset1 = 0x60;
+        public static string ChrFollowCamAOB = "48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B 4E 68 48 8B 05 ? ? ? ? 48 89 48 60";
+        public static int ChrFollowCamOffset1 = 0;
         public static int ChrFollowCamOffset2 = 0x60;
+        public static int ChrFollowCamOffset3 = 0x60;
 
-        public static byte?[] GroupMaskAOB = getAOB("80 3D ? ? ? ? 00 BE 00 00 00 80");
-        public IntPtr GroupMaskAddr;
+        public static string GroupMaskAOB = "80 3D ? ? ? ? 00 BE 00 00 00 80";
         public enum GroupMask
         {
             Map = 0x0,
@@ -26,9 +23,9 @@ namespace DSR_Gadget
             Cutscenes = 0x4,
         }
 
-        public static byte?[] GraphicsDataAOB = getAOB("48 8B 05 ? ? ? ? 48 8B 48 08 48 8B 01 48 8B 40 58");
-        public IntPtr GraphicsDataPtr;
-        public static int GraphicsDataOffset = 0x738;
+        public static string GraphicsDataAOB = "48 8B 05 ? ? ? ? 48 8B 48 08 48 8B 01 48 8B 40 58";
+        public static int GraphicsDataOffset1 = 0;
+        public static int GraphicsDataOffset2 = 0x738;
         public enum GraphicsData
         {
             FilterOverride = 0x34D,
@@ -42,8 +39,8 @@ namespace DSR_Gadget
             FilterHue = 0x36C,
         }
 
-        public static byte?[] ChrClassWarpAOB = getAOB("48 8B 05 ? ? ? ? 66 0F 7F 80 ? ? ? ? 0F 28 02 66 0F 7F 80 ? ? ? ? C6 80");
-        public IntPtr ChrClassWarpPtr;
+        public static string ChrClassWarpAOB = "48 8B 05 ? ? ? ? 66 0F 7F 80 ? ? ? ? 0F 28 02 66 0F 7F 80 ? ? ? ? C6 80";
+        public static int ChrClassWarpOffset1 = 0;
         public int ChrClassWarpBoost = 0x0;
         public enum ChrClassWarp
         {
@@ -54,8 +51,8 @@ namespace DSR_Gadget
             StableAngle = 0xBA4,
         }
 
-        public static byte?[] WorldChrBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 8B 48 68 48 85 C9 0F 84 ? ? ? ? 48 39 5E 10 0F 84 ? ? ? ? 48");
-        public IntPtr WorldChrBasePtr;
+        public static string WorldChrBaseAOB = "48 8B 05 ? ? ? ? 48 8B 48 68 48 85 C9 0F 84 ? ? ? ? 48 39 5E 10 0F 84 ? ? ? ? 48";
+        public static int WorldChrBaseOffset1 = 0;
         public enum WorldChrBase
         {
             ChrData1 = 0x68,
@@ -145,8 +142,7 @@ namespace DSR_Gadget
             PosZ = 0x18,
         }
 
-        public static byte?[] ChrDbgAOB = getAOB("80 3D ? ? ? ? 00 48 8B 8F ? ? ? ? 0F B6 DB");
-        public IntPtr ChrDbgAddr;
+        public static string ChrDbgAOB = "80 3D ? ? ? ? 00 48 8B 8F ? ? ? ? 0F B6 DB";
         public enum ChrDbg
         {
             PlayerNoDead = 0x0,
@@ -166,16 +162,16 @@ namespace DSR_Gadget
             PlayerReload = 0x12,
         }
 
-        public static byte?[] MenuManAOB = getAOB("48 8B 05 ? ? ? ? 89 88 28 08 00 00 85 C9 ? ? C7 80 34 08 00 00 FF FF FF FF C3");
-        public IntPtr MenuManPtr;
+        public static string MenuManAOB = "48 8B 05 ? ? ? ? 89 88 28 08 00 00 85 C9 ? ? C7 80 34 08 00 00 FF FF FF FF C3";
+        public static int MenuManOffset1 = 0;
         public enum MenuMan
         {
             MenuKick = 0x24C,
         }
 
-        public static byte?[] ChrClassBaseAOB = getAOB("48 8B 05 ? ? ? ? 48 85 C0 ? ? F3 0F 58 80 AC 00 00 00");
-        public IntPtr ChrClassBasePtr;
-        public static int ChrData2Offset = 0x10;
+        public static string ChrClassBaseAOB = "48 8B 05 ? ? ? ? 48 85 C0 ? ? F3 0F 58 80 AC 00 00 00";
+        public static int ChrData2Offset1 = 0;
+        public static int ChrData2Offset2 = 0x10;
         public enum ChrData2
         {
             Vitality = 0x40,
@@ -193,30 +189,13 @@ namespace DSR_Gadget
             Class = 0xCE,
         }
 
-        public static byte?[] EventFlagsAOB = getAOB("48 8B 0D ? ? ? ? 99 33 C2 45 33 C0 2B C2 8D 50 F6");
-        public IntPtr EventFlagPtr;
-        public static int EventFlagsOffset = 0x0;
+        public static string EventFlagsAOB = "48 8B 0D ? ? ? ? 99 33 C2 45 33 C0 2B C2 8D 50 F6";
+        public static int EventFlagsOffset1 = 0;
+        public static int EventFlagsOffset2 = 0;
 
-        public static byte?[] ItemGetAOB = getAOB("48 89 5C 24 18 89 54 24 10 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 F9");
-        public IntPtr ItemGetAddr;
+        public static string ItemGetAOB = "48 89 5C 24 18 89 54 24 10 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 F9";
 
-        public static byte?[] BonfireWarpAOB = getAOB("48 89 5C 24 08 57 48 83 EC 20 48 8B D9 8B FA 48 8B 49 08 48 85 C9 0F 84 ? ? ? ? E8 ? ? ? ? 48 8B 4B 08");
-        public IntPtr BonfireWarpAddr;
-
-        private static byte?[] getAOB(string text)
-        {
-            MatchCollection matches = Regex.Matches(text, @"\S+");
-            byte?[] aob = new byte?[matches.Count];
-            for (int i = 0; i < aob.Length; i++)
-            {
-                Match match = matches[i];
-                if (match.Value == "?")
-                    aob[i] = null;
-                else
-                    aob[i] = Byte.Parse(match.Value, System.Globalization.NumberStyles.AllowHexSpecifier);
-            }
-            return aob;
-        }
+        public static string BonfireWarpAOB = "48 89 5C 24 08 57 48 83 EC 20 48 8B D9 8B FA 48 8B 49 08 48 85 C9 0F 84 ? ? ? ? E8 ? ? ? ? 48 8B 4B 08";
 
         public static DSROffsets GetOffsets(int moduleSize)
         {

@@ -37,38 +37,38 @@ namespace DSR_Gadget
             if (loaded)
             {
                 if (!cbxGravity.Checked)
-                    dsrProcess.SetNoGravity(false);
+                    Hook.NoGravity = false;
                 if (!cbxCollision.Checked)
-                    dsrProcess.SetNoCollision(false);
+                    Hook.NoCollision = false;
                 if (cbxSpeed.Checked)
-                    dsrProcess.SetAnimSpeed(1);
+                    Hook.AnimSpeed = 1;
             }
         }
 
         private void reloadPlayer()
         {
             if (!cbxGravity.Checked)
-                dsrProcess.SetNoGravity(true);
+                Hook.NoGravity = true;
             if (!cbxCollision.Checked)
-                dsrProcess.SetNoCollision(true);
+                Hook.NoCollision = true;
         }
 
         private void updatePlayer()
         {
-            nudHealth.Value = dsrProcess.GetHealth();
-            nudHealthMax.Value = dsrProcess.GetHealthMax();
-            nudStamina.Value = dsrProcess.GetStamina();
-            nudStaminaMax.Value = dsrProcess.GetStaminaMax();
+            nudHealth.Value = Hook.Health;
+            nudHealthMax.Value = Hook.HealthMax;
+            nudStamina.Value = Hook.Stamina;
+            nudStaminaMax.Value = Hook.StaminaMax;
 
             try
             {
-                dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
+                Hook.GetPosition(out float x, out float y, out float z, out float angle);
                 nudPosX.Value = (decimal)x;
                 nudPosY.Value = (decimal)y;
                 nudPosZ.Value = (decimal)z;
                 nudPosAngle.Value = angleToDegree(angle);
 
-                dsrProcess.GetStablePosition(out x, out y, out z, out angle);
+                Hook.GetStablePosition(out x, out y, out z, out angle);
                 nudStableX.Value = (decimal)x;
                 nudStableY.Value = (decimal)y;
                 nudStableZ.Value = (decimal)z;
@@ -87,11 +87,11 @@ namespace DSR_Gadget
                 nudStableAngle.Value = 0;
             }
 
-            cbxDeathCam.Checked = dsrProcess.GetDeathCam();
+            cbxDeathCam.Checked = Hook.DeathCam;
             if (cbxSpeed.Checked)
-                dsrProcess.SetAnimSpeed((float)nudSpeed.Value);
+                Hook.AnimSpeed = (float)nudSpeed.Value;
 
-            int bonfireID = dsrProcess.GetLastBonfire();
+            int bonfireID = Hook.LastBonfire;
             DSRBonfire lastBonfire = cmbBonfire.SelectedItem as DSRBonfire;
             if (!cmbBonfire.DroppedDown && bonfireID != lastBonfire.ID && !unknownBonfires.Contains(bonfireID))
             {
@@ -119,13 +119,13 @@ namespace DSR_Gadget
         private void nudHealth_ValueChanged(object sender, EventArgs e)
         {
             if (loaded && !reading)
-                dsrProcess.SetHealth((int)nudHealth.Value);
+                Hook.Health = (int)nudHealth.Value;
         }
 
         private void nudStamina_ValueChanged(object sender, EventArgs e)
         {
             if (loaded && !reading)
-                dsrProcess.SetStamina((int)nudStamina.Value);
+                Hook.Stamina = (int)nudStamina.Value;
         }
 
         private void btnPosStore_Click(object sender, EventArgs e)
@@ -143,7 +143,7 @@ namespace DSR_Gadget
 
             playerState.Health = nudHealth.Value;
             playerState.Stamina = nudStamina.Value;
-            playerState.FollowCam = dsrProcess.DumpFollowCam();
+            playerState.FollowCam = Hook.DumpFollowCam();
             playerState.DeathCam = cbxDeathCam.Checked;
             playerState.Set = true;
         }
@@ -160,13 +160,13 @@ namespace DSR_Gadget
             float y = (float)nudStoredY.Value;
             float z = (float)nudStoredZ.Value;
             float angle = degreeToAngle(nudStoredAngle.Value);
-            dsrProcess.PosWarp(x, y, z, angle);
+            Hook.PosWarp(x, y, z, angle);
 
             if (playerState.Set)
             {
                 // Two frames for safety, wait until after warp
                 System.Threading.Thread.Sleep(1000 / 15);
-                dsrProcess.UndumpFollowCam(playerState.FollowCam);
+                Hook.UndumpFollowCam(playerState.FollowCam);
 
                 if (cbxRestoreState.Checked)
                 {
@@ -180,19 +180,19 @@ namespace DSR_Gadget
         private void cbxGravity_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetNoGravity(!cbxGravity.Checked);
+                Hook.NoGravity = !cbxGravity.Checked;
         }
 
         private void cbxCollision_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetNoCollision(!cbxCollision.Checked);
+                Hook.NoCollision = !cbxCollision.Checked;
         }
 
         private void cbxDeathCam_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded && !reading)
-                dsrProcess.SetDeathCam(cbxDeathCam.Checked);
+                Hook.DeathCam = cbxDeathCam.Checked;
         }
 
         private void cmbBonfire_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,20 +200,20 @@ namespace DSR_Gadget
             if (loaded && !reading)
             {
                 DSRBonfire bonfire = cmbBonfire.SelectedItem as DSRBonfire;
-                dsrProcess.SetLastBonfire(bonfire.ID);
+                Hook.LastBonfire = bonfire.ID;
             }
         }
 
         private void btnWarp_Click(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.BonfireWarp();
+                Hook.BonfireWarp();
         }
 
         private void cbxSpeed_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded && !cbxSpeed.Checked)
-                dsrProcess.SetAnimSpeed(1);
+                Hook.AnimSpeed = 1;
         }
 
         private decimal angleToDegree(float angle)

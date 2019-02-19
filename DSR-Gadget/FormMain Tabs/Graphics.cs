@@ -40,36 +40,36 @@ namespace DSR_Gadget
         private void resetGraphics()
         {
             if (!cbxDrawMap.Checked)
-                dsrProcess.SetDrawMap(true);
+                Hook.DrawMap = true;
             if (!cbxDrawObjects.Checked)
-                dsrProcess.SetDrawObjects(true);
+                Hook.DrawObjects = true;
             if (!cbxDrawCharacters.Checked)
-                dsrProcess.SetDrawCharacters(true);
+                Hook.DrawCharacters = true;
             if (!cbxDrawSFX.Checked)
-                dsrProcess.SetDrawSFX(true);
+                Hook.DrawSFX = true;
             if (!cbxDrawCutscenes.Checked)
-                dsrProcess.SetDrawCutscenes(true);
+                Hook.DrawCutscenes = true;
 
             if (loaded && cbxFilter.Checked)
-                dsrProcess.SetFilterOverride(false);
+                Hook.FilterOverride = false;
         }
 
         private void reloadGraphics()
         {
             if (!cbxDrawMap.Checked)
-                dsrProcess.SetDrawMap(false);
+                Hook.DrawMap = false;
             if (!cbxDrawObjects.Checked)
-                dsrProcess.SetDrawObjects(false);
+                Hook.DrawObjects = false;
             if (!cbxDrawCharacters.Checked)
-                dsrProcess.SetDrawCharacters(false);
+                Hook.DrawCharacters = false;
             if (!cbxDrawSFX.Checked)
-                dsrProcess.SetDrawSFX(false);
+                Hook.DrawSFX = false;
             if (!cbxDrawCutscenes.Checked)
-                dsrProcess.SetDrawCutscenes(false);
+                Hook.DrawCutscenes = false;
 
             if (cbxFilter.Checked)
             {
-                dsrProcess.SetFilterOverride(true);
+                Hook.FilterOverride = true;
                 setFilterValues();
             }
         }
@@ -78,27 +78,27 @@ namespace DSR_Gadget
 
         private void cbxDrawMap_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetDrawMap(cbxDrawMap.Checked);
+            Hook.DrawMap = cbxDrawMap.Checked;
         }
 
         private void cbxDrawObjects_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetDrawObjects(cbxDrawObjects.Checked);
+            Hook.DrawObjects = cbxDrawObjects.Checked;
         }
 
         private void cbxDrawCharacters_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetDrawCharacters(cbxDrawCharacters.Checked);
+            Hook.DrawCharacters = cbxDrawCharacters.Checked;
         }
 
         private void cbxDrawSFX_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetDrawSFX(cbxDrawSFX.Checked);
+            Hook.DrawSFX = cbxDrawSFX.Checked;
         }
 
         private void cbxDrawCutscenes_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetDrawCutscenes(cbxDrawCutscenes.Checked);
+            Hook.DrawCutscenes = cbxDrawCutscenes.Checked;
         }
 
         private void cbxFilter_CheckedChanged(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace DSR_Gadget
             {
                 if (cbxFilter.Checked)
                     setFilterValues();
-                dsrProcess.SetFilterOverride(cbxFilter.Checked);
+                Hook.FilterOverride = cbxFilter.Checked;
             }
         }
 
@@ -185,7 +185,7 @@ namespace DSR_Gadget
                 float contB = (float)nudContrastB.Value;
                 float saturation = (float)nudSaturation.Value;
                 float hue = (float)nudHue.Value;
-                dsrProcess.SetFilterValues(brightR, brightG, brightB, contR, contG, contB, saturation, hue);
+                Hook.SetFilterValues(brightR, brightG, brightB, contR, contG, contB, saturation, hue);
             }
         }
     }

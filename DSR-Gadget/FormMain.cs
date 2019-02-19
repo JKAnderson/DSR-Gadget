@@ -13,7 +13,7 @@ namespace DSR_Gadget
     {
         private static Properties.Settings settings = Properties.Settings.Default;
 
-        private DSRProcess dsrProcess = null;
+        private DSRHook Hook;
         private bool loaded = false;
         private bool reading = false;
         private List<Control> criticalControls;
@@ -21,6 +21,10 @@ namespace DSR_Gadget
         public FormMain()
         {
             InitializeComponent();
+            Hook = new DSRHook(5000, 5000);
+            Hook.OnHooked += DsrProcess_OnHooked;
+            Hook.OnUnhooked += DsrProcess_OnUnhooked;
+            Hook.Start();
             criticalControls = new List<Control>
             {
                 nudHealth, nudStamina, btnPosStore, btnPosRestore, cbxDeathCam, btnWarp, cmbBonfire,
@@ -78,69 +82,53 @@ namespace DSR_Gadget
                 settings.WindowLocation = RestoreBounds.Location;
 
             saveAll();
-            if (dsrProcess != null)
-            {
-                resetAll();
-                dsrProcess.Close();
-            }
+            resetAll();
         }
 
         private void tmrUpdate_Tick(object sender, EventArgs e)
         {
-            if (dsrProcess == null || !dsrProcess.Valid)
+            if (Hook.Hooked)
             {
-                DSRProcess result = DSRProcess.GetProcess();
-                if (result != null)
+                if (Hook.Loaded)
                 {
-                    lblVersionValue.Text = result.Version;
-                    if (result.Valid)
+                    if (!loaded)
                     {
-                        lblVersionValue.ForeColor = result.Version == "Unknown" ? Color.DarkOrange : Color.DarkGreen;
-                        tmrUpdate.Interval = 16;
+                        lblLoadedValue.Text = "Yes";
+                        loaded = true;
+                        reloadAll();
+                        enableCriticalControls(true);
                     }
                     else
-                        lblVersionValue.ForeColor = Color.DarkRed;
-                    dsrProcess = result;
-                }
-            }
-            else
-            {
-                if (dsrProcess.Alive())
-                {
-                    if (dsrProcess.Loaded())
                     {
-                        if (!loaded)
-                        {
-                            lblLoadedValue.Text = "Yes";
-                            dsrProcess.LoadPointers();
-                            loaded = true;
-                            reloadAll();
-                            enableCriticalControls(true);
-                        }
-                        else
-                        {
-                            updateAll();
-                        }
-                    }
-                    else if (loaded)
-                    {
-                        lblLoadedValue.Text = "No";
-                        enableCriticalControls(false);
-                        loaded = false;
+                        updateAll();
                     }
                 }
-                else
+                else if (loaded)
                 {
-                    tmrUpdate.Interval = 1000;
-                    dsrProcess.Close();
-                    dsrProcess = null;
-                    lblVersionValue.Text = "None";
-                    lblVersionValue.ForeColor = Color.Black;
                     lblLoadedValue.Text = "No";
                     enableCriticalControls(false);
                     loaded = false;
                 }
             }
+        }
+
+        private void DsrProcess_OnHooked(object sender, PropertyHook.PHEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                lblVersionValue.Text = Hook.Version;
+            }));
+        }
+
+        private void DsrProcess_OnUnhooked(object sender, PropertyHook.PHEventArgs e)
+        {
+            Invoke(new Action(() =>
+            {
+                lblVersionValue.Text = "None";
+                lblLoadedValue.Text = "No";
+                enableCriticalControls(false);
+                loaded = false;
+            }));
         }
 
         private void initializeAll()

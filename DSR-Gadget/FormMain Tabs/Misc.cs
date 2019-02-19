@@ -18,13 +18,13 @@ namespace DSR_Gadget
         private void btnEventRead_Click(object sender, EventArgs e)
         {
             if (Int32.TryParse(txtEventFlag.Text, out int id))
-                cbxEventFlag.Checked = dsrProcess.ReadEventFlag(id);
+                cbxEventFlag.Checked = Hook.ReadEventFlag(id);
         }
 
         private void btnEventWrite_Click(object sender, EventArgs e)
         {
             if (Int32.TryParse(txtEventFlag.Text, out int id))
-                dsrProcess.WriteEventFlag(id, cbxEventFlag.Checked);
+                Hook.WriteEventFlag(id, cbxEventFlag.Checked);
         }
     }
 }

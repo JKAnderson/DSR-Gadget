@@ -12,195 +12,195 @@ namespace DSR_Gadget
         private void resetCheats()
         {
             if (cbxAllNoMagicQty.Checked)
-                dsrProcess.SetAllNoMagicQty(false);
+                Hook.AllNoMagicQty = false;
             if (cbxPlayerNoDead.Checked)
-                dsrProcess.SetPlayerNoDead(false);
+                Hook.PlayerNoDead = false;
             if (cbxPlayerExterminate.Checked)
-                dsrProcess.SetPlayerExterminate(false);
+                Hook.PlayerExterminate = false;
             if (cbxAllNoStamina.Checked)
-                dsrProcess.SetAllNoStamina(false);
+                Hook.AllNoStamina = false;
             if (cbxAllNoArrow.Checked)
-                dsrProcess.SetAllNoArrow(false);
+                Hook.AllNoArrow = false;
             if (cbxPlayerHide.Checked)
-                dsrProcess.SetPlayerHide(false);
+                Hook.PlayerHide = false;
             if (cbxPlayerSilence.Checked)
-                dsrProcess.SetPlayerSilence(false);
+                Hook.PlayerSilence = false;
             if (cbxAllNoDead.Checked)
-                dsrProcess.SetAllNoDead(false);
+                Hook.AllNoDead = false;
             if (cbxAllNoDamage.Checked)
-                dsrProcess.SetAllNoDamage(false);
+                Hook.AllNoDamage = false;
             if (cbxAllNoHit.Checked)
-                dsrProcess.SetAllNoHit(false);
+                Hook.AllNoHit = false;
             if (cbxAllNoAttack.Checked)
-                dsrProcess.SetAllNoAttack(false);
+                Hook.AllNoAttack = false;
             if (cbxAllNoMove.Checked)
-                dsrProcess.SetAllNoMove(false);
+                Hook.AllNoMove = false;
             if (cbxAllNoUpdateAI.Checked)
-                dsrProcess.SetAllNoUpdateAI(false);
+                Hook.AllNoUpdateAI = false;
 
             if (loaded)
             {
                 if (cbxPlayerDeadMode.Checked)
-                    dsrProcess.SetPlayerDeadMode(false);
+                    Hook.PlayerDeadMode = false;
                 if (cbxPlayerDisableDamage.Checked)
-                    dsrProcess.SetPlayerDisableDamage(false);
+                    Hook.PlayerDisableDamage = false;
                 if (cbxPlayerNoHit.Checked)
-                    dsrProcess.SetPlayerNoHit(false);
+                    Hook.PlayerNoHit = false;
                 if (cbxPlayerNoStamina.Checked)
-                    dsrProcess.SetPlayerNoStamina(false);
+                    Hook.PlayerNoStamina = false;
                 if (cbxPlayerSuperArmor.Checked)
-                    dsrProcess.SetPlayerSuperArmor(false);
+                    Hook.PlayerSuperArmor = false;
                 if (cbxPlayerNoGoods.Checked)
-                    dsrProcess.SetPlayerNoGoods(false);
+                    Hook.PlayerNoGoods = false;
             }
         }
 
         private void reloadCheats()
         {
             if (cbxPlayerDeadMode.Checked)
-                dsrProcess.SetPlayerDeadMode(true);
+                Hook.PlayerDeadMode = true;
             if (cbxPlayerDisableDamage.Checked)
-                dsrProcess.SetPlayerDisableDamage(true);
+                Hook.PlayerDisableDamage = true;
             if (cbxPlayerNoHit.Checked)
-                dsrProcess.SetPlayerNoHit(true);
+                Hook.PlayerNoHit = true;
             if (cbxPlayerNoStamina.Checked)
-                dsrProcess.SetPlayerNoStamina(true);
+                Hook.PlayerNoStamina = true;
             if (cbxPlayerSuperArmor.Checked)
-                dsrProcess.SetPlayerSuperArmor(true);
+                Hook.PlayerSuperArmor = true;
             if (cbxPlayerNoGoods.Checked)
-                dsrProcess.SetPlayerNoGoods(true);
+                Hook.PlayerNoGoods = true;
             if (cbxAllNoMagicQty.Checked)
-                dsrProcess.SetAllNoMagicQty(true);
+                Hook.AllNoMagicQty = true;
             if (cbxPlayerNoDead.Checked)
-                dsrProcess.SetPlayerNoDead(true);
+                Hook.PlayerNoDead = true;
             if (cbxPlayerExterminate.Checked)
-                dsrProcess.SetPlayerExterminate(true);
+                Hook.PlayerExterminate = true;
             if (cbxAllNoStamina.Checked)
-                dsrProcess.SetAllNoStamina(true);
+                Hook.AllNoStamina = true;
             if (cbxAllNoArrow.Checked)
-                dsrProcess.SetAllNoArrow(true);
+                Hook.AllNoArrow = true;
             if (cbxPlayerHide.Checked)
-                dsrProcess.SetPlayerHide(true);
+                Hook.PlayerHide = true;
             if (cbxPlayerSilence.Checked)
-                dsrProcess.SetPlayerSilence(true);
+                Hook.PlayerSilence = true;
             if (cbxAllNoDead.Checked)
-                dsrProcess.SetAllNoDead(true);
+                Hook.AllNoDead = true;
             if (cbxAllNoDamage.Checked)
-                dsrProcess.SetAllNoDamage(true);
+                Hook.AllNoDamage = true;
             if (cbxAllNoHit.Checked)
-                dsrProcess.SetAllNoHit(true);
+                Hook.AllNoHit = true;
             if (cbxAllNoAttack.Checked)
-                dsrProcess.SetAllNoAttack(true);
+                Hook.AllNoAttack = true;
             if (cbxAllNoMove.Checked)
-                dsrProcess.SetAllNoMove(true);
+                Hook.AllNoMove = true;
             if (cbxAllNoUpdateAI.Checked)
-                dsrProcess.SetAllNoUpdateAI(true);
+                Hook.AllNoUpdateAI = true;
         }
 
         private void updateCheats()
         {
-            if (cbxPlayerDeadMode.Checked && !dsrProcess.GetPlayerDeadMode())
-                dsrProcess.SetPlayerDeadMode(true);
+            if (cbxPlayerDeadMode.Checked && !Hook.PlayerDeadMode)
+                Hook.PlayerDeadMode = true;
         }
 
         private void cbxPlayerDeadMode_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetPlayerDeadMode(cbxPlayerDeadMode.Checked);
+                Hook.PlayerDeadMode = cbxPlayerDeadMode.Checked;
         }
 
         private void cbxPlayerNoDead_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerNoDead(cbxPlayerNoDead.Checked);
+            Hook.PlayerNoDead = cbxPlayerNoDead.Checked;
         }
 
         private void cbxPlayerDisableDamage_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetPlayerDisableDamage(cbxPlayerDisableDamage.Checked);
+                Hook.PlayerDisableDamage = cbxPlayerDisableDamage.Checked;
         }
 
         private void cbxPlayerNoHit_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetPlayerNoHit(cbxPlayerNoHit.Checked);
+                Hook.PlayerNoHit = cbxPlayerNoHit.Checked;
         }
 
         private void cbxPlayerNoStamina_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerNoStamina(cbxPlayerNoStamina.Checked);
+            Hook.PlayerNoStamina = cbxPlayerNoStamina.Checked;
         }
 
         private void cbxPlayerSuperArmor_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetPlayerSuperArmor(cbxPlayerSuperArmor.Checked);
+                Hook.PlayerSuperArmor = cbxPlayerSuperArmor.Checked;
         }
 
         private void cbxPlayerHide_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerHide(cbxPlayerHide.Checked);
+            Hook.PlayerHide = cbxPlayerHide.Checked;
         }
 
         private void cbxPlayerSilence_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerSilence(cbxPlayerSilence.Checked);
+            Hook.PlayerSilence = cbxPlayerSilence.Checked;
         }
 
         private void cbxPlayerExterminate_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetPlayerExterminate(cbxPlayerExterminate.Checked);
+            Hook.PlayerExterminate = cbxPlayerExterminate.Checked;
         }
 
         private void cbxPlayerNoGoods_CheckedChanged(object sender, EventArgs e)
         {
             if (loaded)
-                dsrProcess.SetPlayerNoGoods(cbxPlayerNoGoods.Checked);
+                Hook.PlayerNoGoods = cbxPlayerNoGoods.Checked;
         }
 
         private void cbxAllNoArrow_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoArrow(cbxAllNoArrow.Checked);
+            Hook.AllNoArrow = cbxAllNoArrow.Checked;
         }
 
         private void cbxAllNoMagicQty_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoMagicQty(cbxAllNoMagicQty.Checked);
+            Hook.AllNoMagicQty = cbxAllNoMagicQty.Checked;
         }
 
         private void cbxAllNoDead_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoDead(cbxAllNoDead.Checked);
+            Hook.AllNoDead = cbxAllNoDead.Checked;
         }
 
         private void cbxAllNoDamage_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoDamage(cbxAllNoDamage.Checked);
+            Hook.AllNoDamage = cbxAllNoDamage.Checked;
         }
 
         private void cbxAllNoHit_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoHit(cbxAllNoHit.Checked);
+            Hook.AllNoHit = cbxAllNoHit.Checked;
         }
 
         private void cbxAllNoStamina_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoStamina(cbxAllNoStamina.Checked);
+            Hook.AllNoStamina = cbxAllNoStamina.Checked;
         }
 
         private void cbxAllNoAttack_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoAttack(cbxAllNoAttack.Checked);
+            Hook.AllNoAttack = cbxAllNoAttack.Checked;
         }
 
         private void cbxAllNoMove_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoMove(cbxAllNoMove.Checked);
+            Hook.AllNoMove = cbxAllNoMove.Checked;
         }
 
         private void cbxAllNoUpdateAI_CheckedChanged(object sender, EventArgs e)
         {
-            dsrProcess.SetAllNoUpdateAI(cbxAllNoUpdateAI.Checked);
+            Hook.AllNoUpdateAI = cbxAllNoUpdateAI.Checked;
         }
     }
 }

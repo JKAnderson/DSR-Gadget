@@ -124,7 +124,7 @@ namespace DSR_Gadget
                 DSRInfusion infusion = cmbInfusion.SelectedItem as DSRInfusion;
                 id += infusion.Value;
             }
-            dsrProcess.GetItem(category.ID, id, (int)nudQuantity.Value);
+            Hook.GetItem(category.ID, id, (int)nudQuantity.Value);
         }
 
         private void cbxRestrict_CheckedChanged(object sender, EventArgs e)

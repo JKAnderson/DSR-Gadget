@@ -9,8 +9,8 @@ namespace DSR_Gadget
         {
             foreach (DSRClass charClass in DSRClass.All)
                 cmbClass.Items.Add(charClass);
-            nudHumanity.Maximum = Int32.MaxValue;
-            nudHumanity.Minimum = Int32.MinValue;
+            nudHumanity.Maximum = int.MaxValue;
+            nudHumanity.Minimum = int.MinValue;
         }
 
         private void saveStats() { }
@@ -19,25 +19,25 @@ namespace DSR_Gadget
 
         private void reloadStats()
         {
-            cmbClass.SelectedIndex = dsrProcess.GetClass();
+            cmbClass.SelectedIndex = Hook.Class;
         }
 
         private void updateStats()
         {
-            txtSoulLevel.Text = dsrProcess.GetSoulLevel().ToString();
-            nudHumanity.Value = dsrProcess.GetHumanity();
-            nudSouls.Value = dsrProcess.GetSouls();
+            txtSoulLevel.Text = Hook.SoulLevel.ToString();
+            nudHumanity.Value = Hook.Humanity;
+            nudSouls.Value = Hook.Souls;
 
             try
             {
-                nudVitality.Value = dsrProcess.GetVitality();
-                nudAttunement.Value = dsrProcess.GetAttunement();
-                nudEndurance.Value = dsrProcess.GetEndurance();
-                nudStrength.Value = dsrProcess.GetStrength();
-                nudDexterity.Value = dsrProcess.GetDexterity();
-                nudResistance.Value = dsrProcess.GetResistance();
-                nudIntelligence.Value = dsrProcess.GetIntelligence();
-                nudFaith.Value = dsrProcess.GetFaith();
+                nudVitality.Value = Hook.Vitality;
+                nudAttunement.Value = Hook.Attunement;
+                nudEndurance.Value = Hook.Endurance;
+                nudStrength.Value = Hook.Strength;
+                nudDexterity.Value = Hook.Dexterity;
+                nudResistance.Value = Hook.Resistance;
+                nudIntelligence.Value = Hook.Intelligence;
+                nudFaith.Value = Hook.Faith;
             }
             catch (ArgumentOutOfRangeException) { }
         }
@@ -101,7 +101,7 @@ namespace DSR_Gadget
             sl += intel - charClass.Intelligence;
             sl += fth - charClass.Faith;
 
-            dsrProcess.LevelUp(vit, att, end, str, dex, res, intel, fth, sl);
+            //dsrProcess.LevelUp(vit, att, end, str, dex, res, intel, fth, sl);
         }
     }
 }

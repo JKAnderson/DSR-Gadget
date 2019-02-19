@@ -41,19 +41,19 @@ namespace DSR_Gadget
 
             hotkeys.Add(new GadgetHotkey("HotkeyUp", "Move Up", flpHotkeyControls, () =>
             {
-                dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
-                dsrProcess.PosWarp(x, y + 10, z, angle);
+                Hook.GetPosition(out float x, out float y, out float z, out float angle);
+                Hook.PosWarp(x, y + 10, z, angle);
             }));
 
             hotkeys.Add(new GadgetHotkey("HotkeyDown", "Move Down", flpHotkeyControls, () =>
             {
-                dsrProcess.GetPosition(out float x, out float y, out float z, out float angle);
-                dsrProcess.PosWarp(x, y - 10, z, angle);
+                Hook.GetPosition(out float x, out float y, out float z, out float angle);
+                Hook.PosWarp(x, y - 10, z, angle);
             }));
 
             hotkeys.Add(new GadgetHotkey("HotkeyMenu", "Quit to Menu", flpHotkeyControls, () =>
             {
-                dsrProcess.MenuKick();
+                Hook.MenuKick();
             }));
 
             hotkeys.Add(new GadgetHotkey("HotkeyFilter", "Toggle Filter", flpHotkeyControls, () =>
@@ -81,12 +81,12 @@ namespace DSR_Gadget
 #if DEBUG
             hotkeys.Add(new GadgetHotkey("HotkeyTest1", "Test 1", flpHotkeyControls, () =>
             {
-                dsrProcess.HotkeyTest1();
+                Hook.HotkeyTest1();
             }));
 
             hotkeys.Add(new GadgetHotkey("HotkeyTest2", "Test 2", flpHotkeyControls, () =>
             {
-                dsrProcess.HotkeyTest2();
+                Hook.HotkeyTest2();
             }));
 #endif
 
@@ -110,7 +110,7 @@ namespace DSR_Gadget
 
         private void GlobalKeyboardHook_KeyDownOrUp(object sender, GlobalKeyboardHookEventArgs e)
         {
-            if (cbxHotkeysEnable.Checked && loaded && dsrProcess.Focused() && !e.IsUp)
+            if (cbxHotkeysEnable.Checked && loaded && Hook.Focused && !e.IsUp)
             {
                 foreach (GadgetHotkey hotkey in hotkeys)
                 {
