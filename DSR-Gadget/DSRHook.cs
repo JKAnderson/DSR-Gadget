@@ -215,41 +215,49 @@ namespace DSR_Gadget
         public int Vitality
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Vitality);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Vitality, value);
         }
 
         public int Attunement
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Attunement);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Attunement, value);
         }
 
         public int Endurance
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Endurance);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Endurance, value);
         }
 
         public int Strength
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Strength);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Strength, value);
         }
 
         public int Dexterity
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Dexterity);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Dexterity, value);
         }
 
         public int Resistance
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Resistance);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Resistance, value);
         }
 
         public int Intelligence
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Intelligence);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Intelligence, value);
         }
 
         public int Faith
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Faith);
+            set => ChrData2.WriteInt32((int)DSROffsets.ChrData2.Faith, value);
         }
         #endregion
 
