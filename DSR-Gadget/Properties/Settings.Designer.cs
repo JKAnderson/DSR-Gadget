@@ -374,6 +374,18 @@ namespace DSR_Gadget.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AllowStatEditing {
+            get {
+                return ((bool)(this["AllowStatEditing"]));
+            }
+            set {
+                this["AllowStatEditing"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Warned {
             get {
                 return ((bool)(this["Warned"]));

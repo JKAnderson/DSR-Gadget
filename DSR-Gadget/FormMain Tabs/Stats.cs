@@ -56,27 +56,27 @@ namespace DSR_Gadget
 
             if (!reading)
             {
-                //dsrProcess.SetClass(charClass.ID);
-                //recalculateStats();
+                dsrProcess.SetClass(charClass.ID);
+                recalculateStats();
             }
         }
 
         private void nudHumanity_ValueChanged(object sender, EventArgs e)
         {
-            //if (!reading)
-            //dsrProcess?.SetHumanity((int)nudHumanity.Value);
+            if (!reading)
+            dsrProcess?.SetHumanity((int)nudHumanity.Value);
         }
 
         private void nudSouls_ValueChanged(object sender, EventArgs e)
         {
-            //if (!reading)
-            //dsrProcess?.SetSouls((int)nudSouls.Value);
+            if (!reading)
+            dsrProcess?.SetSouls((int)nudSouls.Value);
         }
 
         private void nudStats_ValueChanged(object sender, EventArgs e)
         {
-            //if (!reading)
-            //recalculateStats();
+            if (!reading)
+            recalculateStats();
         }
 
         private void recalculateStats()
@@ -101,7 +101,7 @@ namespace DSR_Gadget
             sl += intel - charClass.Intelligence;
             sl += fth - charClass.Faith;
 
-            //dsrProcess.LevelUp(vit, att, end, str, dex, res, intel, fth, sl);
+            dsrProcess.LevelUp(vit, att, end, str, dex, res, intel, fth, sl);
         }
     }
 }
