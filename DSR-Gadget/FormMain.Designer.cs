@@ -6,7 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        private static Properties.Settings settings = Properties.Settings.Default;
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -883,15 +883,19 @@
             this.tpgStats.TabIndex = 6;
             this.tpgStats.Text = "Stats";
             this.tpgStats.UseVisualStyleBackColor = true;
+
             // 
             // lblStatsOff2
-            // 
-            this.lblStatsOff2.AutoSize = true;
-            this.lblStatsOff2.Location = new System.Drawing.Point(6, 263);
-            this.lblStatsOff2.Name = "lblStatsOff2";
-            this.lblStatsOff2.Size = new System.Drawing.Size(228, 13);
-            this.lblStatsOff2.TabIndex = 53;
-            this.lblStatsOff2.Text = "Please spawn soul and humanity items instead.";
+            // Only show this label if stat editing is disbabled
+            if (!settings.AllowStatEditing)
+            {
+                this.lblStatsOff2.AutoSize = true;
+                this.lblStatsOff2.Location = new System.Drawing.Point(6, 263);
+                this.lblStatsOff2.Name = "lblStatsOff2";
+                this.lblStatsOff2.Size = new System.Drawing.Size(228, 13);
+                this.lblStatsOff2.TabIndex = 53;
+                this.lblStatsOff2.Text = "Please spawn soul and humanity items instead.";
+            }
             // 
             // lblStatsOff1
             // 
@@ -900,7 +904,9 @@
             this.lblStatsOff1.Name = "lblStatsOff1";
             this.lblStatsOff1.Size = new System.Drawing.Size(299, 13);
             this.lblStatsOff1.TabIndex = 52;
-            this.lblStatsOff1.Text = "This page has been made read-only due to spooky anti-cheat.";
+            this.lblStatsOff1.Text = settings.AllowStatEditing
+                ? "This can get you banned. Use at your own risk."
+                : "This page is read only while AllowStatEditing is turned off.";
             // 
             // nudHumanity
             // 
@@ -925,7 +931,7 @@
             // nudSouls
             // 
             this.nudSouls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nudSouls.Enabled = false;
+            this.nudSouls.Enabled = true;
             this.nudSouls.Location = new System.Drawing.Point(270, 58);
             this.nudSouls.Maximum = new decimal(new int[] {
             999999999,
@@ -971,7 +977,7 @@
             // 
             this.cmbClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbClass.Enabled = false;
+            this.cmbClass.Enabled = settings.AllowStatEditing ? true : false;
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(270, 6);
             this.cmbClass.Name = "cmbClass";
@@ -981,11 +987,12 @@
             // 
             // txtSoulLevel
             // 
-            this.txtSoulLevel.Enabled = false;
+            this.txtSoulLevel.Enabled = settings.AllowStatEditing ? true : false;
             this.txtSoulLevel.Location = new System.Drawing.Point(6, 6);
             this.txtSoulLevel.Name = "txtSoulLevel";
             this.txtSoulLevel.Size = new System.Drawing.Size(54, 20);
             this.txtSoulLevel.TabIndex = 41;
+            this.txtSoulLevel.ValueChanged += new System.EventHandler(this.txtSoulLevel_ValueChanged);
             // 
             // lblFaith
             // 
@@ -998,7 +1005,7 @@
             // 
             // nudFaith
             // 
-            this.nudFaith.Enabled = false;
+            this.nudFaith.Enabled = settings.AllowStatEditing ? true : false;
             this.nudFaith.Location = new System.Drawing.Point(6, 214);
             this.nudFaith.Maximum = new decimal(new int[] {
             99,
@@ -1031,7 +1038,7 @@
             // 
             // nudIntelligence
             // 
-            this.nudIntelligence.Enabled = false;
+            this.nudIntelligence.Enabled = settings.AllowStatEditing ? true : false;
             this.nudIntelligence.Location = new System.Drawing.Point(6, 188);
             this.nudIntelligence.Maximum = new decimal(new int[] {
             99,
@@ -1064,7 +1071,7 @@
             // 
             // nudResistance
             // 
-            this.nudResistance.Enabled = false;
+            this.nudResistance.Enabled = settings.AllowStatEditing ? true : false;
             this.nudResistance.Location = new System.Drawing.Point(6, 162);
             this.nudResistance.Maximum = new decimal(new int[] {
             99,
@@ -1097,7 +1104,7 @@
             // 
             // nudDexterity
             // 
-            this.nudDexterity.Enabled = false;
+            this.nudDexterity.Enabled = settings.AllowStatEditing ? true : false;
             this.nudDexterity.Location = new System.Drawing.Point(6, 136);
             this.nudDexterity.Maximum = new decimal(new int[] {
             99,
@@ -1130,7 +1137,7 @@
             // 
             // nudStrength
             // 
-            this.nudStrength.Enabled = false;
+            this.nudStrength.Enabled = settings.AllowStatEditing ? true : false;
             this.nudStrength.Location = new System.Drawing.Point(6, 110);
             this.nudStrength.Maximum = new decimal(new int[] {
             99,
@@ -1163,7 +1170,7 @@
             // 
             // nudEndurance
             // 
-            this.nudEndurance.Enabled = false;
+            this.nudEndurance.Enabled = settings.AllowStatEditing ? true : false;
             this.nudEndurance.Location = new System.Drawing.Point(6, 84);
             this.nudEndurance.Maximum = new decimal(new int[] {
             99,
@@ -1196,7 +1203,7 @@
             // 
             // nudAttunement
             // 
-            this.nudAttunement.Enabled = false;
+            this.nudAttunement.Enabled = settings.AllowStatEditing ? true : false;
             this.nudAttunement.Location = new System.Drawing.Point(6, 58);
             this.nudAttunement.Maximum = new decimal(new int[] {
             99,
@@ -1229,7 +1236,7 @@
             // 
             // nudVitality
             // 
-            this.nudVitality.Enabled = false;
+            this.nudVitality.Enabled = settings.AllowStatEditing ? true : false;
             this.nudVitality.Location = new System.Drawing.Point(6, 32);
             this.nudVitality.Maximum = new decimal(new int[] {
             99,
