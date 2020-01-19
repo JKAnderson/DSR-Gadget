@@ -27,6 +27,9 @@ namespace DSR_Gadget
         private PHPointer MenuMan;
         private PHPointer EventFlags;
 
+        private PHPointer CurrentAnimStruct;
+        private PHPointer StayAnimStruct;
+
         public DSRHook(int refreshInterval, int minLifetime) :
             base(refreshInterval, minLifetime, p => p.MainWindowTitle == "DARK SOULS™: REMASTERED")
         {
@@ -49,6 +52,9 @@ namespace DSR_Gadget
             ChrAnimData = CreateBasePointer(IntPtr.Zero);
             ChrPosData = CreateBasePointer(IntPtr.Zero);
             ChrData2 = CreateChildPointer(ChrClassBasePtr, DSROffsets.ChrData2Offset1, DSROffsets.ChrData2Offset2);
+
+            CurrentAnimStruct = CreateChildPointer(ChrData1, 0x68, 0x48);
+            StayAnimStruct = CreateChildPointer(ChrData1, 0x30, 0x5D0);
 
             OnHooked += DSRHook_OnHooked;
         }
@@ -186,6 +192,12 @@ namespace DSR_Gadget
         {
             ChrFollowCam.WriteBytes(0, value);
         }
+
+        public int CurrentAnim => CurrentAnimStruct.ReadInt32(0x80);
+
+        public int StayAnimUpper => StayAnimStruct.ReadInt32(0x690);
+
+        public int StayAnimLower => StayAnimStruct.ReadInt32(0x13B0);
         #endregion
 
         #region Stats
