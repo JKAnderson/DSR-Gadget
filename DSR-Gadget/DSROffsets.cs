@@ -197,6 +197,10 @@ namespace DSR_Gadget
 
         public const string BonfireWarpAOB = "48 89 5C 24 08 57 48 83 EC 20 48 8B D9 8B FA 48 8B 49 08 48 85 C9 0F 84 ? ? ? ? E8 ? ? ? ? 48 8B 4B 08";
 
+        public const string AiTimerAOB = "48 8b 0d ? ? ? ? 48 85 c9 74 0e 48 83 c1 28";
+        public const int AiTimerOffset1 = 0;
+        public const int AiTimerOffset2 = 0x24;
+
         public static DSROffsets GetOffsets(int moduleSize)
         {
             DSROffsets result = new DSROffsets();

@@ -59,6 +59,7 @@ namespace DSR_Gadget
             nudHealthMax.Value = Hook.HealthMax;
             nudStamina.Value = Hook.Stamina;
             nudStaminaMax.Value = Hook.StaminaMax;
+            nudAiTimer.Value = (decimal)Hook.AiTimerValue;
 
             try
             {

@@ -26,6 +26,7 @@ namespace DSR_Gadget
         private PHPointer GraphicsData;
         private PHPointer MenuMan;
         private PHPointer EventFlags;
+        private PHPointer AiTimer;
 
         public DSRHook(int refreshInterval, int minLifetime) :
             base(refreshInterval, minLifetime, p => p.MainWindowTitle == "DARK SOULS™: REMASTERED")
@@ -43,6 +44,7 @@ namespace DSR_Gadget
             EventFlags = RegisterRelativeAOB(DSROffsets.EventFlagsAOB, 3, 7, DSROffsets.EventFlagsOffset1, DSROffsets.EventFlagsOffset2);
             ItemGetAddr = RegisterAbsoluteAOB(DSROffsets.ItemGetAOB);
             BonfireWarpAddr = RegisterAbsoluteAOB(DSROffsets.BonfireWarpAOB);
+            AiTimer = RegisterRelativeAOB(DSROffsets.AiTimerAOB, 3, 7, DSROffsets.AiTimerOffset1);
 
             ChrData1 = CreateChildPointer(WorldChrBase, (int)DSROffsets.WorldChrBase.ChrData1);
             ChrMapData = CreateBasePointer(IntPtr.Zero);
@@ -482,6 +484,8 @@ namespace DSR_Gadget
             int offset = getEventFlagOffset(ID, out uint mask);
             EventFlags.WriteFlag32(offset, mask, state);
         }
+
+        public float AiTimerValue => AiTimer.ReadSingle(DSROffsets.AiTimerOffset2);
         #endregion
 
         #region Hotkeys
