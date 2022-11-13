@@ -187,6 +187,7 @@ namespace DSR_Gadget
             Souls = 0x94,
             Gender = 0xCA,
             Class = 0xCE,
+            Stance = 0x308,
         }
 
         public const string EventFlagsAOB = "48 8B 0D ? ? ? ? 99 33 C2 45 33 C0 2B C2 8D 50 F6";

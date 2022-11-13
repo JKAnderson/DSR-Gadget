@@ -253,6 +253,11 @@ namespace DSR_Gadget
         {
             get => ChrData2.ReadInt32((int)DSROffsets.ChrData2.Faith);
         }
+
+        public void MoveSwap()
+        {
+            ChrData2.WriteByte((int)DSROffsets.ChrData2.Stance, 2);
+        }
         #endregion
 
         #region Items

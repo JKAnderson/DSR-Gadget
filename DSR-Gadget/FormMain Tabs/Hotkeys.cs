@@ -71,6 +71,11 @@ namespace DSR_Gadget
                 createItem();
             }));
 
+            hotkeys.Add(new GadgetHotkey("HotkeyMoveSwap", "Moveswap", flpHotkeyControls, () =>
+            {
+                Hook.MoveSwap();
+            }));
+
             /*
             hotkeys.Add(new GadgetHotkey("Hotkey", "", flpHotkeyControls, () =>
             {
