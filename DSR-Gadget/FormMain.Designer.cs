@@ -65,6 +65,8 @@
             this.lblPosX = new System.Windows.Forms.Label();
             this.btnPosRestore = new System.Windows.Forms.Button();
             this.gbxStatus = new System.Windows.Forms.GroupBox();
+            this.nudAiTimer = new System.Windows.Forms.NumericUpDown();
+            this.LabelAiTimer = new System.Windows.Forms.Label();
             this.lblStamina = new System.Windows.Forms.Label();
             this.lblHealth = new System.Windows.Forms.Label();
             this.lblStatusMax = new System.Windows.Forms.Label();
@@ -193,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudStoredY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStoredZ)).BeginInit();
             this.gbxStatus.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAiTimer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStaminaMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStamina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).BeginInit();
@@ -740,6 +743,8 @@
             // gbxStatus
             // 
             this.gbxStatus.AutoSize = true;
+            this.gbxStatus.Controls.Add(this.nudAiTimer);
+            this.gbxStatus.Controls.Add(this.LabelAiTimer);
             this.gbxStatus.Controls.Add(this.lblStamina);
             this.gbxStatus.Controls.Add(this.lblHealth);
             this.gbxStatus.Controls.Add(this.lblStatusMax);
@@ -754,6 +759,32 @@
             this.gbxStatus.TabIndex = 1;
             this.gbxStatus.TabStop = false;
             this.gbxStatus.Text = "Status";
+            // 
+            // nudAiTimer
+            // 
+            this.nudAiTimer.DecimalPlaces = 3;
+            this.nudAiTimer.Enabled = false;
+            this.nudAiTimer.Location = new System.Drawing.Point(222, 32);
+            this.nudAiTimer.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nudAiTimer.Name = "nudAiTimer";
+            this.nudAiTimer.ReadOnly = true;
+            this.nudAiTimer.Size = new System.Drawing.Size(75, 20);
+            this.nudAiTimer.TabIndex = 22;
+            this.nudAiTimer.ThousandsSeparator = true;
+            // 
+            // LabelAiTimer
+            // 
+            this.LabelAiTimer.AutoSize = true;
+            this.LabelAiTimer.Location = new System.Drawing.Point(219, 16);
+            this.LabelAiTimer.Name = "LabelAiTimer";
+            this.LabelAiTimer.Size = new System.Drawing.Size(46, 13);
+            this.LabelAiTimer.TabIndex = 21;
+            this.LabelAiTimer.Text = "AI Timer";
+            this.LabelAiTimer.UseWaitCursor = true;
             // 
             // lblStamina
             // 
@@ -2227,6 +2258,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudStoredZ)).EndInit();
             this.gbxStatus.ResumeLayout(false);
             this.gbxStatus.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAiTimer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStaminaMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStamina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHealthMax)).EndInit();
@@ -2425,6 +2457,8 @@
         private System.Windows.Forms.TextBox txtEventFlag;
         private System.Windows.Forms.Label lblEventID;
 		private System.Windows.Forms.FlowLayoutPanel flpHotkeyControls;
-	}
+        private System.Windows.Forms.NumericUpDown nudAiTimer;
+        private System.Windows.Forms.Label LabelAiTimer;
+    }
 }
 
